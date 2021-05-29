@@ -6,14 +6,19 @@
 //
 
 import UIKit
-
+import IQKeyboardManagerSwift
+import Firebase
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        IQKeyboardManager.shared.enable = true
+        UITabBar.appearance().backgroundColor = .red
+        FirebaseApp.configure()
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         return true
     }
 
@@ -34,3 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate {
+    static func shared() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+}

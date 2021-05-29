@@ -7,14 +7,24 @@
 
 import UIKit
 
+import SKCountryPicker
 class LoginPhoneView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+  
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var countryCode: UILabel!
+    @IBOutlet weak var countryImageView: UIImageView!
+    @IBOutlet weak var phoneTF: UITextField!
+    @IBOutlet weak var phoneView: UIView!
+    @IBOutlet weak var nextDesign: UIButton!
+    
+    var phoneNumberWithCode = ""
+    var verification_id: String? = nil
+    func updateUI(){
+        
+        mainView.dropShadow(radius: 8, shadow: 4)
+        phoneView.setBCdesign(borderWidth: 1, borderColor: ColorName.welcomeBorder.color, radius: 8)
+        nextDesign.setCornerRadius(radius: 8)
+        
     }
-    */
-
 }

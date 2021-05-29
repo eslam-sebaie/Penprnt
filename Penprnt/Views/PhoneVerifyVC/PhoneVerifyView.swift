@@ -6,15 +6,15 @@
 //
 
 import UIKit
-
+import SGCodeTextField
 class PhoneVerifyView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+   
+    @IBOutlet weak var tf_otp: SGCodeTextField!
+    @IBOutlet weak var verifyDesign: UIButton!
+    
+    func updateUI() {
+        self.tf_otp.addDoneOnKeyboardWithTarget(self, action: #selector(PhoneVerifyVC.hide(sender:)))
+        verifyDesign.setCornerRadius(radius: 8)
     }
-    */
 
 }

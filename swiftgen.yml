@@ -1,0 +1,18 @@
+xcassets:
+  inputs: Penprnt/Resources/Assets/Assets.xcassets
+  outputs:
+    templateName: swift5
+    output: Penprnt/Resources/Assets/AssetsManager.swift
+    
+strings:
+    inputs: Penprnt/Resources/Strings
+    outputs:
+        templateName: structured-swift5
+        output: Penprnt/Resources/Strings/Strings.swift
+
+colors:
+  inputs: Penprnt/Resources/Colors/color.txt
+  outputs:
+    templateName: swift5
+    output: Penprnt/Resources/Colors/Colors.swift
+

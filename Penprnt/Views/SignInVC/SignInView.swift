@@ -8,13 +8,29 @@
 import UIKit
 
 class SignInView: UIView {
+    
+    @IBOutlet weak var signInBG: UIImageView!
+    @IBOutlet weak var signInLabel: UILabel!
+    @IBOutlet weak var signInView: UIView!
+    @IBOutlet weak var upperSignInView: UIView!
+    @IBOutlet weak var signInDesign: UIButton!
+    @IBOutlet weak var emailOrPhoneTF: UITextField!
+    
+    @IBOutlet weak var passwordTF: UITextField!
+    
+    func updateUI(){
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+        signInBG.image = Asset.signInBackGround.image
+        signInLabel.text = L10n.signInLabel
+
+        signInView.dropShadow(scale: true, radius: 8, shadow: 4)
+
+        upperSignInView.setCornerRadius(radius: 8)
+        upperSignInView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        signInDesign.setBCdesign(borderWidth: 0, borderColor: .white, radius: 8)
+
+
     }
-    */
+   
 
 }

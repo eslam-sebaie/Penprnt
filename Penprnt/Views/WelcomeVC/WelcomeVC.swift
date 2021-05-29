@@ -9,21 +9,38 @@ import UIKit
 
 class WelcomeVC: UIViewController {
 
+    @IBOutlet var welcomeView: WelcomeView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        welcomeView.updateUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    class func create() -> WelcomeVC {
+        
+        let welcomeVC: WelcomeVC = UIViewController.create(storyboardName: Storyboards.main, identifier: ViewControllers.welcomeVC)
+        return welcomeVC
+        
     }
-    */
-
+    
+    @IBAction func phonePressed(_ sender: Any) {
+        let phoneVC = LoginPhoneVC.create()
+        self.present(phoneVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func skipPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: Storyboards.home, bundle: nil)
+        let catVC = storyboard.instantiateViewController(withIdentifier: "CategoryVC") as! CategoryVC
+        self.present(catVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func signInPressed(_ sender: Any) {
+//        let storyboard = UIStoryboard(name: Storyboards.home, bundle: nil)
+//        let graveViewController = storyboard.instantiateViewController(withIdentifier: "tabViewController") as! tabViewController
+//        self.present(graveViewController, animated: true, completion: nil)
+        
+        
+        let signIn = SignInVC.create()
+        self.present(signIn, animated: true, completion: nil)
+    }
+    
 }

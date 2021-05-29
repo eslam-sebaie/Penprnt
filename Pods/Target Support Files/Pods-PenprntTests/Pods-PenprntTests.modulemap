@@ -1,0 +1,6 @@
+framework module Pods_PenprntTests {
+  umbrella header "Pods-PenprntTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

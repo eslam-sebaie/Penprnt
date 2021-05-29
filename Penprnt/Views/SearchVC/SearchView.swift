@@ -9,12 +9,15 @@ import UIKit
 
 class SearchView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+  
+    @IBOutlet weak var searchTF: UITextField!
+    @IBOutlet weak var productTableView: UITableView!
+    @IBOutlet weak var searchLabel: UILabel!
+    var itemSize1 = CGSize(width: 0, height: 0)
+    
+    func updateUI() {
+        searchTF.setCornerRadius(radius: 12)
+        searchTF.setLeftPaddingPoints(10)
+        searchTF.setRightPaddingPoints(10)
     }
-    */
-
 }

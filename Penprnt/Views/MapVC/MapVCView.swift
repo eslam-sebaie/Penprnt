@@ -5,16 +5,25 @@
 //  Created by Eslam Sebaie on 4/29/21.
 //
 
-import UIKit
-
+import MapKit
+import CoreLocation
 class MapVCView: UIView {
+    
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
+    
+    @IBOutlet weak var saveButton: UIButton!
+    
+    @IBOutlet weak var addressLabel: UILabel!
+    
+    let locationManager = CLLocationManager()
+    
+    func updateUI(){
+        saveButton.layer.cornerRadius = 8
+        saveButton.layer.masksToBounds = true
+        
     }
-    */
-
+    
 }
