@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>956900035463-06kf30ndiajqa9d8r5dt22b1tnvvo6h2.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.956900035463-06kf30ndiajqa9d8r5dt22b1tnvvo6h2</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAWHdk4vZ_0oFFwwYOrCyWmA--dz3OJjEE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>956900035463</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>sebaie.PenPrntVendor</string>
+	<key>PROJECT_ID</key>
+	<string>penprnt-389eb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>penprnt-389eb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:956900035463:ios:123b19ddde511c4ef6e122</string>
+</dict>
+</plist>
