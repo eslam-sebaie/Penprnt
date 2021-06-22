@@ -99,7 +99,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
     }
     
     @IBAction func filterPrssed(_ sender: Any) {
-        productsView.filterView.backgroundColor = ColorName.white.color
+//        productsView.filterView.backgroundColor = ColorName.white.color
         productsView.sortView.backgroundColor = ColorName.mainColor.color
         productsView.filterLabel.textColor = .black
         productsView.sortLabel.textColor = .white
@@ -158,6 +158,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
             cell.newProductImage.layer.masksToBounds = true
             cell.newProductImage.clipsToBounds = true
             cell.newProductRate.settings.updateOnTouch = false
+            cell.newProductRate.settings.fillMode = .precise
             cell.newProductRate.rating = Double(rateArray[indexPath.row]) ?? 0.0
             cell.contentView.layer.cornerRadius = 8
             cell.contentView.layer.masksToBounds = true
@@ -173,6 +174,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
             cell.productImage.layer.cornerRadius = 8
             cell.productImage.layer.masksToBounds = true
             cell.productRate.settings.updateOnTouch = false
+            cell.productRate.settings.fillMode = .precise
             cell.productRate.rating = Double(rateArray1[indexPath.row]) ?? 0.0
             cell.contentView.layer.cornerRadius = 8
             cell.contentView.layer.masksToBounds = true

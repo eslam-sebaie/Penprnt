@@ -27,7 +27,7 @@ class ProductsView: UIView {
         sortView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         
         filterView.layer.cornerRadius = 16
-        filterView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        filterView.layer.masksToBounds = true
         sortFilterView.dropShadow(radius: 16, shadow: 2)
     }
 }

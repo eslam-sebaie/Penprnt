@@ -72,17 +72,16 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWc-7Q-2gm">
-                                                        <rect key="frame" x="183" y="0.0" width="183" height="45"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="45"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1h-iy-5tE">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1h-iy-5tE">
                                                                 <rect key="frame" x="16" y="12.5" width="38" height="20.5"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1W-m3-xOI">
-                                                                <rect key="frame" x="0.0" y="0.0" width="183" height="45"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="366" height="45"/>
                                                                 <connections>
                                                                     <action selector="filterPrssed:" destination="ipn-vt-3fA" eventType="touchUpInside" id="W5o-ge-yon"/>
                                                                 </connections>
@@ -90,25 +89,32 @@
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="u1W-m3-xOI" secondAttribute="bottom" id="8fD-21-sXE"/>
-                                                            <constraint firstItem="u1W-m3-xOI" firstAttribute="top" secondItem="bWc-7Q-2gm" secondAttribute="top" id="QHV-O0-CJm"/>
-                                                            <constraint firstItem="u1W-m3-xOI" firstAttribute="leading" secondItem="bWc-7Q-2gm" secondAttribute="leading" id="aNf-PK-1ks"/>
-                                                            <constraint firstAttribute="trailing" secondItem="u1W-m3-xOI" secondAttribute="trailing" id="n4m-v2-xeS"/>
+                                                            <constraint firstAttribute="trailing" secondItem="u1W-m3-xOI" secondAttribute="trailing" id="0M2-vi-Rrn"/>
+                                                            <constraint firstItem="u1W-m3-xOI" firstAttribute="leading" secondItem="bWc-7Q-2gm" secondAttribute="leading" id="C9h-pQ-ox7"/>
+                                                            <constraint firstItem="m1h-iy-5tE" firstAttribute="centerY" secondItem="bWc-7Q-2gm" secondAttribute="centerY" id="Kyg-xX-oH8"/>
+                                                            <constraint firstItem="m1h-iy-5tE" firstAttribute="leading" secondItem="bWc-7Q-2gm" secondAttribute="leading" constant="16" id="cFa-GG-pwW"/>
+                                                            <constraint firstItem="u1W-m3-xOI" firstAttribute="top" secondItem="bWc-7Q-2gm" secondAttribute="top" id="kvw-6a-aMN"/>
+                                                            <constraint firstAttribute="bottom" secondItem="u1W-m3-xOI" secondAttribute="bottom" id="l4a-hv-0aU"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="bWc-7Q-2gm" secondAttribute="bottom" id="0xT-cn-6YB"/>
-                                                    <constraint firstItem="bWc-7Q-2gm" firstAttribute="leading" secondItem="jO6-9o-c6X" secondAttribute="trailing" id="11Y-FF-07O"/>
+                                                    <constraint firstItem="bWc-7Q-2gm" firstAttribute="leading" secondItem="jsX-zY-xpW" secondAttribute="leading" id="1LM-CD-Tyf"/>
+                                                    <constraint firstAttribute="bottom" secondItem="bWc-7Q-2gm" secondAttribute="bottom" id="E1g-Ay-Kzq"/>
                                                     <constraint firstItem="jO6-9o-c6X" firstAttribute="leading" secondItem="jsX-zY-xpW" secondAttribute="leading" id="NFw-CR-CKU"/>
-                                                    <constraint firstAttribute="trailing" secondItem="bWc-7Q-2gm" secondAttribute="trailing" id="Z7N-Lr-qgJ"/>
                                                     <constraint firstAttribute="height" constant="45" id="gIL-CF-hV4"/>
-                                                    <constraint firstItem="bWc-7Q-2gm" firstAttribute="top" secondItem="jsX-zY-xpW" secondAttribute="top" id="gc7-EM-zMs"/>
                                                     <constraint firstItem="jO6-9o-c6X" firstAttribute="width" secondItem="jsX-zY-xpW" secondAttribute="width" multiplier="0.5" id="kdN-xC-2n9"/>
                                                     <constraint firstAttribute="bottom" secondItem="jO6-9o-c6X" secondAttribute="bottom" id="tMh-A2-3vb"/>
+                                                    <constraint firstItem="bWc-7Q-2gm" firstAttribute="top" secondItem="jsX-zY-xpW" secondAttribute="top" id="uJJ-La-tOe"/>
                                                     <constraint firstItem="jO6-9o-c6X" firstAttribute="top" secondItem="jsX-zY-xpW" secondAttribute="top" id="wub-il-RZW"/>
+                                                    <constraint firstAttribute="trailing" secondItem="bWc-7Q-2gm" secondAttribute="trailing" id="yID-bj-xJx"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="subviews">
+                                                        <exclude reference="jO6-9o-c6X"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGJ-tC-1Bk">
                                                 <rect key="frame" x="24" y="69" width="29.5" height="18"/>
@@ -175,6 +181,12 @@
                                                                                 </userDefinedRuntimeAttribute>
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
                                                                                     <integer key="value" value="5"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                                                    <real key="value" value="2.2000000000000002"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                                                                    <integer key="value" value="0"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                             </userDefinedRuntimeAttributes>
                                                                         </view>
@@ -441,7 +453,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzO-8A-1AB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-88" y="88"/>
+            <point key="canvasLocation" x="-88.405797101449281" y="87.723214285714278"/>
         </scene>
         <!--FilterVC-->
         <scene sceneID="CEK-M3-XJl">
