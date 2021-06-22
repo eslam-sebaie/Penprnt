@@ -19,6 +19,14 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
     var nameArray1 = [String]()
     var imageArray1 = [String]()
     var priceArray1 = [String]()
+    
+    var colorArray = [String]()
+    var colorArray1 = [String]()
+    
+    var countArray = [String]()
+    var countArray1 = [String]()
+    var rateArray = [String]()
+    var rateArray1 = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         productsView.updateUI()
@@ -28,6 +36,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
         getSaleProduct()
         productsView.productCollectionView.reloadData()
         productsView.newProductCollectionView.reloadData()
+        productsView.categoryNameLabel.text = receiveCatName
         // Do any additional setup after loading the view.
     }
     
@@ -42,6 +51,8 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
                         self.nameArray.append(i.name ?? "")
                         self.imageArray.append(i.image ?? "")
                         self.priceArray.append(i.price ?? "")
+                        self.countArray.append(i.totalCountUser ?? "")
+                        self.rateArray.append(i.totalRate ?? "")
                     }
                     self.productsView.newProductCollectionView.reloadData()
                 }
@@ -59,6 +70,8 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
                         self.nameArray1.append(i.products.name ?? "")
                         self.imageArray1.append(i.products.image ?? "")
                         self.priceArray1.append(i.products.price ?? "")
+                        self.countArray1.append(i.products.totalCountUser ?? "")
+                        self.rateArray1.append(i.products.totalRate ?? "")
                     }
                     self.productsView.productCollectionView.reloadData()
                 }
@@ -93,6 +106,12 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
         productsView.filterView.layer.cornerRadius = 16
         productsView.filterView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner,.layerMinXMaxYCorner,.layerMinXMinYCorner]
         productsView.sortFilterView.dropShadow(radius: 16, shadow: 2)
+        let filter = FilterVC.create()
+        filter.catID = receiveID
+        filter.catName = receiveCatName
+        self.present(filter, animated: true, completion: nil)
+        
+        
     }
     
     
@@ -132,19 +151,17 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
         if collectionView == productsView.newProductCollectionView  {
             let cell = productsView.newProductCollectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as! NewCollectionViewCell
             cell.newProductName.text = nameArray[indexPath.row]
-    //        cell.catImage.sd_setImage(with: URL(string: catImage[indexPath.row]), completed: nil)
-    //        //        cell.contentView.layer.borderWidth = 1
-    //        //        cell.contentView.layer.bor
-    //        cell.catImage.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             cell.newProductImage.sd_setImage(with: URL(string: imageArray[indexPath.row]), completed: nil)
             cell.newProductPrice.text = priceArray[indexPath.row]
             cell.favImage.isHidden = true
             cell.newProductImage.layer.cornerRadius = 8
             cell.newProductImage.layer.masksToBounds = true
             cell.newProductImage.clipsToBounds = true
-            
+            cell.newProductRate.settings.updateOnTouch = false
+            cell.newProductRate.rating = Double(rateArray[indexPath.row]) ?? 0.0
             cell.contentView.layer.cornerRadius = 8
             cell.contentView.layer.masksToBounds = true
+            cell.newProductRateCount.text = "(\(countArray[indexPath.row]))"
             return cell
         }
         else {
@@ -155,12 +172,19 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
             cell.favImage.isHidden = true
             cell.productImage.layer.cornerRadius = 8
             cell.productImage.layer.masksToBounds = true
+            cell.productRate.settings.updateOnTouch = false
+            cell.productRate.rating = Double(rateArray1[indexPath.row]) ?? 0.0
             cell.contentView.layer.cornerRadius = 8
             cell.contentView.layer.masksToBounds = true
-            
+            cell.productRateCount.text = "(\(countArray1[indexPath.row]))"
             return cell
         }
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let rate = RateVC.create()
+        self.present(rate, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -176,6 +200,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 16
     }
+    
     
     
     

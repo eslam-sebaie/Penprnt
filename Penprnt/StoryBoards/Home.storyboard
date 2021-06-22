@@ -912,7 +912,12 @@
                             <constraint firstItem="a1U-VR-5CM" firstAttribute="leading" secondItem="psM-iq-Uum" secondAttribute="leading" constant="19" id="xR2-es-2Rm"/>
                         </constraints>
                         <connections>
+                            <outlet property="labelHeight" destination="sP3-yN-zIO" id="hyY-By-wqd"/>
                             <outlet property="productTableView" destination="S9m-vw-L0I" id="GOC-dy-202"/>
+                            <outlet property="searchDesign" destination="Wg3-lU-aJT" id="q42-ZH-ZZq"/>
+                            <outlet property="searchDesignHeaight" destination="IiK-JV-drD" id="NZS-nz-2eU"/>
+                            <outlet property="searchHeight" destination="Vy5-xP-aFG" id="k5C-4R-zhZ"/>
+                            <outlet property="searchImage" destination="B5Q-nA-Rlg" id="gZQ-4K-tTb"/>
                             <outlet property="searchLabel" destination="2n8-fs-R0K" id="c1w-QY-wUv"/>
                             <outlet property="searchTF" destination="26d-I1-bbz" id="Ylb-0M-oIy"/>
                         </connections>

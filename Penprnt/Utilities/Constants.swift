@@ -12,6 +12,7 @@ struct Storyboards {
     static let home = "Home"
     static let profile = "Profile"
     static let products = "Products"
+    static let order = "Order"
 }
 
 // View Controllers
@@ -25,6 +26,8 @@ struct ViewControllers {
     static let profileVC = "ProfileVC"
     static let editProfileVC = "EditProfileVC"
     static let searchVC = "SearchVC"
+    static let rateVC = "RateVC"
+    static let filterVC = "FilterVC"
 }
 struct URLs {
     // MARK:- base
@@ -40,6 +43,8 @@ struct URLs {
     static let productSale = "productSale"
     static let searchUser = "searchUser"
     static let filterAlph = "filterAlph"
+    static let filterByPriceColor = "filterByPriceColor"
+    
 }
 struct ParameterKeys {
     static let name = "name"

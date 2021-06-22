@@ -15,14 +15,43 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var imageArray = [String]()
     var priceArray = [String]()
     var sec = 1
+    
+    var receiveID = 0
+    var receiveColor = ""
+    var receivePrice = ""
+    var checkFilter = false
+    var colorArray = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchView.updateUI()
-        
-        
+        if checkFilter {
+            searchView.searchImage.isHidden = true
+            searchView.searchDesign.isHidden = true
+            searchView.searchDesignHeaight.constant = 0
+            searchView.searchHeight.constant = 0
+            searchView.labelHeight.constant = 0
+            colorArray.append(receiveColor)
+            getFilterProduct()
+        }
     }
+    func getFilterProduct() {
+        APIManager.filterColorPrice(id: receiveID, productColor: colorArray, price: receivePrice) { (response) in
+            switch response {
+            case .failure(let err):
+                print(err)
+            case .success(let result):
+                for i in result.data {
+                    self.imageArray.append(i.image ?? "")
+                    self.nameArray.append(i.name ?? "")
+                    self.priceArray.append(i.price ?? "")
+                }
+                self.searchView.productTableView.reloadData()
+            }
+        }
+    }
+    
     class func create() -> SearchVC {
-        let searchVC: SearchVC = UIViewController.create(storyboardName: Storyboards.profile, identifier: ViewControllers.searchVC)
+        let searchVC: SearchVC = UIViewController.create(storyboardName: Storyboards.home, identifier: ViewControllers.searchVC)
         return searchVC
     }
     

@@ -21,13 +21,15 @@ struct productInfo: Codable {
     let barCode: String?
     let date, design: String?
     let productColor: [String]?
+    let totalRate: String?
+    let totalCountUser: String?
     let isActive: Bool?
     let vendorID, categoryID, createdAt, updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id, image, name
         case datumDescription = "description"
-        case itemNo, brandName, price, wholeSale, quantity, size, barCode, date, design, productColor, isActive
+        case itemNo, brandName, price, wholeSale, quantity, size, barCode, date, design, productColor, isActive,totalRate,totalCountUser
         case vendorID = "vendorId"
         case categoryID = "categoryId"
         case createdAt = "created_at"
@@ -63,13 +65,15 @@ struct Products: Codable {
     let barCode: String?
     let date, design: String?
     let productColor: [String]?
+    let totalRate: String?
+    let totalCountUser: String?
     let isActive: Bool?
     let vendorID, categoryID, createdAt, updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id, image, name
         case productsDescription = "description"
-        case itemNo, brandName, price, wholeSale, quantity, size, barCode, date, design, productColor, isActive
+        case itemNo, brandName, price, wholeSale, quantity, size, barCode, date, design, productColor, isActive, totalRate, totalCountUser
         case vendorID = "vendorId"
         case categoryID = "categoryId"
         case createdAt = "created_at"

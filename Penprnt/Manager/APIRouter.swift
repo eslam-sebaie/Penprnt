@@ -23,12 +23,13 @@ enum APIRouter: URLRequestConvertible {
     case productsSale(_ id: Int)
     case searchUser(_ emailNumber: String)
     case filterAlph(_ id: Int)
+    case filterByPriceColor(_ id: Int, _ productColor: [String], _ price: String)
     // MARK: - HttpMethod
     private var method: HTTPMethod {
         switch self {
         case .userRegister, .userLogin, .updateAddress, .updateImage, .editProfile:
             return .post
-        case .getCategories, .searchProduct, .productsNew, .productsSale, .searchUser, .filterAlph:
+        case .getCategories, .searchProduct, .productsNew, .productsSale, .searchUser, .filterAlph, .filterByPriceColor:
             return .get
         default:
             return .delete
@@ -60,6 +61,8 @@ enum APIRouter: URLRequestConvertible {
             return [ParameterKeys.email: emailNumber]
         case .filterAlph(let id):
             return ["id": id]
+        case .filterByPriceColor(let id, let productColor, let price):
+            return ["id": id, "productColor": productColor, "price": price]
         default:
             return nil
         }
@@ -90,6 +93,8 @@ enum APIRouter: URLRequestConvertible {
             return URLs.searchUser
         case .filterAlph:
             return URLs.filterAlph
+        case .filterByPriceColor:
+            return URLs.filterByPriceColor
         }
     }
     

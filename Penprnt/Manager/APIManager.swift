@@ -65,6 +65,12 @@ class APIManager {
         }
     }
     
+    class func filterColorPrice(id: Int, productColor: [String], price: String,completion: @escaping(Result<FilterResponse, Error>) -> Void ) {
+        request(APIRouter.filterByPriceColor(id, productColor, price)) { (response) in
+            completion(response)
+        }
+    }
+    
     class func uploadPhoto(image: UIImage, completion: @escaping (_ error: Error?, _ upImage: uploadImage?)-> Void){
         
         AF.upload(multipartFormData: { (form: MultipartFormData) in

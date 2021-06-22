@@ -17,4 +17,5 @@ class SaleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var favImage: UIImageView!
     
     
+    
 }

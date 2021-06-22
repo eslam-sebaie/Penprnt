@@ -24,6 +24,7 @@ target 'Penprnt' do
     pod 'SwiftyJSON'
     pod 'ImageSlideshow', '~> 1.9.0'
     pod "ImageSlideshow/Kingfisher"
+    pod 'fluid-slider'
   target 'PenprntTests' do
     inherit! :search_paths
     # Pods for testing
