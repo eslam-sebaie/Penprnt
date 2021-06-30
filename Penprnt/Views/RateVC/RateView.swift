@@ -25,6 +25,8 @@ class RateView: UIView {
         rateStars.rating = 0
         rateView.settings.updateOnTouch = false
         rateStars.settings.updateOnTouch = true
+        rateStars.settings.fillMode = .precise
+        rateView.settings.fillMode = .precise
         mainRateView.isHidden = true
         okDesign.setCornerRadius(radius: 8)
         mainRateView.dropShadow(radius: 16, shadow: 2)

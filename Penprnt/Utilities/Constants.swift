@@ -28,6 +28,7 @@ struct ViewControllers {
     static let searchVC = "SearchVC"
     static let rateVC = "RateVC"
     static let filterVC = "FilterVC"
+    static let productDetailsVC = "ProductDetailsVC"
 }
 struct URLs {
     // MARK:- base

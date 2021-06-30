@@ -27,6 +27,8 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
     var countArray1 = [String]()
     var rateArray = [String]()
     var rateArray1 = [String]()
+    var productInformation = [productInfo]()
+    var productInformation1 = [MostProductInfo]()
     override func viewDidLoad() {
         super.viewDidLoad()
         productsView.updateUI()
@@ -47,6 +49,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
                 print(err)
             case .success(let result):
                 if result.message != "faild"{
+                    self.productInformation = result.data
                     for i in result.data {
                         self.nameArray.append(i.name ?? "")
                         self.imageArray.append(i.image ?? "")
@@ -66,6 +69,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
                 print(err)
             case .success(let result):
                 if result.message != "faild"{
+                    self.productInformation1 = result.data
                     for i in result.data {
                         self.nameArray1.append(i.products.name ?? "")
                         self.imageArray1.append(i.products.image ?? "")
@@ -185,8 +189,22 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let rate = RateVC.create()
-        self.present(rate, animated: true, completion: nil)
+//        let rate = RateVC.create()
+//        self.present(rate, animated: true, completion: nil)
+        
+        if collectionView == productsView.newProductCollectionView  {
+            let proDetails = ProductDetailsVC.create()
+            proDetails.receiveInfo = productInformation[indexPath.row]
+            proDetails.checkNew = true
+            self.present(proDetails, animated: true, completion: nil)
+        }
+        else {
+            let proDetails = ProductDetailsVC.create()
+            proDetails.receiveInfo1 = productInformation1[indexPath.row]
+            proDetails.checkNew = false
+            self.present(proDetails, animated: true, completion: nil)
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
