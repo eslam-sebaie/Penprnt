@@ -26,9 +26,11 @@ struct ViewControllers {
     static let profileVC = "ProfileVC"
     static let editProfileVC = "EditProfileVC"
     static let searchVC = "SearchVC"
+    static let storeVC = "StoreVC"
     static let rateVC = "RateVC"
     static let filterVC = "FilterVC"
     static let productDetailsVC = "ProductDetailsVC"
+    static let subCategoryVC = "SubCategoryVC"
 }
 struct URLs {
     // MARK:- base
@@ -45,7 +47,9 @@ struct URLs {
     static let searchUser = "searchUser"
     static let filterAlph = "filterAlph"
     static let filterByPriceColor = "filterByPriceColor"
-    
+    static let alltStoreWithCount = "alltStoreWithCount"
+    static let subCategory = "SubCategory"
+    static let rate = "rate"
 }
 struct ParameterKeys {
     static let name = "name"

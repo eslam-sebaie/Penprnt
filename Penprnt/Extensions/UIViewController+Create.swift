@@ -49,5 +49,14 @@ extension UIViewController {
 //        return array[0]
 //    }
     
-    
+    func convertTimeStamp(date: Int) -> String {
+        let date = Date(timeIntervalSince1970: TimeInterval(date))
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "E, d MMM yyyy/h:mm a"
+        let strDate = dateFormatter.string(from: date)
+        let array = strDate.components(separatedBy: CharacterSet(charactersIn: "/"))
+        return array[0]
+    }
 }

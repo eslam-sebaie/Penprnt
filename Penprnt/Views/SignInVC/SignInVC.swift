@@ -53,8 +53,8 @@ extension SignInVC {
     }
     func presentCategory() {
         let storyboard = UIStoryboard(name: Storyboards.home, bundle: nil)
-        let catVC = storyboard.instantiateViewController(withIdentifier: "CategoryVC") as! CategoryVC
-        self.present(catVC, animated: true, completion: nil)
+        let tabVC = storyboard.instantiateViewController(withIdentifier: "tabViewController")
+        self.present(tabVC, animated: true, completion: nil)
     }
     
 }

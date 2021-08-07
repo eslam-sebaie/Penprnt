@@ -16,14 +16,22 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
     var receiveInfo1 = MostProductInfo(productID: "", id: 0, products: Products(id: 0, image: "", name: "", productsDescription: "", itemNo: "", brandName: "", price: "", wholeSale: "", quantity: "", size: [], barCode: "", date: "", design: "", productColor: [], totalRate: "", totalCountUser: "", isActive: false, vendorID: "", categoryID: "", createdAt: "", updatedAt: ""))
     
     var checkNew = false
-    
+    var productID = 0
+    var totalRate = ""
+    var totalRateCount = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("!@$$$")
+        print(checkNew)
+        print(receiveInfo)
+        print(receiveInfo1)
+        
         colorCollectionViewSpacing()
         sizeCollectionViewSpacing()
         productDetailsView.updateUI()
         if checkNew {
             productDetailsView.setDetailsNew(info: receiveInfo)
+            
         }
         else {
             productDetailsView.setDetailsMostSale(info: receiveInfo1)
@@ -71,7 +79,24 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
     }
     
     @IBAction func reviewsPressed(_ sender: Any) {
+        if checkNew {
+            productID = receiveInfo.id
+            totalRate = receiveInfo.totalRate ?? "0"
+            let x = Double(totalRate) ?? 0.0
+            let y = Double(round(10 * x)/10)
+            totalRate = String(y)
+         
+            totalRateCount = receiveInfo.totalCountUser ?? "0"
+        }
+        else {
+            productID = receiveInfo1.products.id
+            totalRate = receiveInfo1.products.totalRate ?? "0"
+            totalRateCount = receiveInfo1.products.totalCountUser ?? "0"
+        }
         let rate = RateVC.create()
+        rate.receiveProductID = productID
+        rate.receiveTotalRate = totalRate
+        rate.receiveTotalRateCount = totalRateCount
         self.present(rate, animated: true, completion: nil)
     }
     

@@ -29,6 +29,11 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
     var rateArray1 = [String]()
     var productInformation = [productInfo]()
     var productInformation1 = [MostProductInfo]()
+    
+    var receiveVendorID = 0
+    var receiveCatID = 0
+    var receiveSubCatID = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         productsView.updateUI()
@@ -43,7 +48,8 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
     }
     
     func getNewProduct() {
-        APIManager.productsNew(id: receiveID) { (response) in
+        self.productsView.showLoader()
+        APIManager.productsNew(id: receiveCatID, idSub: receiveSubCatID, idVendor: receiveVendorID) { (response) in
             switch response {
             case .failure(let err):
                 print(err)
@@ -57,13 +63,15 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
                         self.countArray.append(i.totalCountUser ?? "")
                         self.rateArray.append(i.totalRate ?? "")
                     }
+                    self.productsView.hideLoader()
                     self.productsView.newProductCollectionView.reloadData()
                 }
             }
         }
     }
     func getSaleProduct() {
-        APIManager.productsSale(id: receiveID) { (response) in
+        self.productsView.showLoader()
+        APIManager.productsSale(idSub: receiveSubCatID) { (response) in
             switch response {
             case .failure(let err):
                 print(err)
@@ -77,6 +85,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
                         self.countArray1.append(i.products.totalCountUser ?? "")
                         self.rateArray1.append(i.products.totalRate ?? "")
                     }
+                    self.productsView.hideLoader()
                     self.productsView.productCollectionView.reloadData()
                 }
             }
@@ -100,10 +109,15 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
         productsView.sortView.layer.cornerRadius = 16
         productsView.sortView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner,.layerMinXMaxYCorner,.layerMinXMinYCorner]
         productsView.sortFilterView.dropShadow(radius: 16, shadow: 3)
+        let storyboard = UIStoryboard(name: Storyboards.home, bundle: nil)
+        let searchVC = storyboard.instantiateViewController(withIdentifier: "SearchVC") as! SearchVC
+        searchVC.receiveSubCat = receiveSubCatID
+        self.present(searchVC, animated: true, completion: nil)
+        
     }
     
     @IBAction func filterPrssed(_ sender: Any) {
-//        productsView.filterView.backgroundColor = ColorName.white.color
+        productsView.filterView.backgroundColor = ColorName.white.color
         productsView.sortView.backgroundColor = ColorName.mainColor.color
         productsView.filterLabel.textColor = .black
         productsView.sortLabel.textColor = .white
@@ -111,7 +125,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
         productsView.filterView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner,.layerMinXMaxYCorner,.layerMinXMinYCorner]
         productsView.sortFilterView.dropShadow(radius: 16, shadow: 2)
         let filter = FilterVC.create()
-        filter.catID = receiveID
+        filter.subCatID = receiveSubCatID
         filter.catName = receiveCatName
         self.present(filter, animated: true, completion: nil)
         
@@ -189,9 +203,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let rate = RateVC.create()
-//        self.present(rate, animated: true, completion: nil)
-        
+
         if collectionView == productsView.newProductCollectionView  {
             let proDetails = ProductDetailsVC.create()
             proDetails.receiveInfo = productInformation[indexPath.row]

@@ -26,6 +26,7 @@ class CategoryVC: UIViewController, UICollectionViewDataSource, UICollectionView
     var imageArray = [String]()
     var idArray = [Int]()
     var selectedIndexPath:IndexPath!
+    var receiveVendorID = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryView.determineCollectionViewSpacing()
@@ -61,7 +62,8 @@ class CategoryVC: UIViewController, UICollectionViewDataSource, UICollectionView
     
     
     func getCats() {
-        APIManager.getCategories { (response) in
+        self.categoryView.showLoader()
+        APIManager.getCategories(vendorId: receiveVendorID) { (response) in
             switch response {
             case .failure(let err):
                 print(err)
@@ -72,9 +74,14 @@ class CategoryVC: UIViewController, UICollectionViewDataSource, UICollectionView
                     self.catImage.append(i.image ?? "")
                     self.detailsArray.append(i.details ?? "")
                 }
+                self.categoryView.hideLoader()
                 self.categoryView.catCollectionView.reloadData()
             }
         }
+    }
+    
+    @IBAction func backPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func profilePressed(_ sender: Any) {
@@ -90,6 +97,7 @@ class CategoryVC: UIViewController, UICollectionViewDataSource, UICollectionView
         }
     }
     
+    
     @IBAction func menuPressed(_ sender: Any) {
         categoryView.menu()
     }
@@ -97,7 +105,7 @@ class CategoryVC: UIViewController, UICollectionViewDataSource, UICollectionView
     @IBAction func categoryPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: Storyboards.home, bundle: nil)
         let catVC = storyboard.instantiateViewController(withIdentifier: "tabViewController") as! tabViewController
-        catVC.selectedIndex = 4
+        catVC.selectedIndex = 3
         self.present(catVC, animated: true, completion: nil)
         
         
@@ -132,12 +140,17 @@ class CategoryVC: UIViewController, UICollectionViewDataSource, UICollectionView
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        categoryView.nameChoosen = nameArray[indexPath.row]
-        let products = ProductsVC.create()
-        products.receiveCatName = categoryView.nameChoosen
-        products.receiveID = idArray[indexPath.row]
-        self.present(products, animated: true, completion: nil)
+        let subcat = SubCategoryVC.create()
+        subcat.receiveVendorID = receiveVendorID
+        subcat.receiveCatID = "\(idArray[indexPath.row])"
+        self.present(subcat, animated: true, completion: nil)
+        
+        
+//        categoryView.nameChoosen = nameArray[indexPath.row]
+//        let products = ProductsVC.create()
+//        products.receiveCatName = categoryView.nameChoosen
+//        products.receiveID = idArray[indexPath.row]
+//        self.present(products, animated: true, completion: nil)
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

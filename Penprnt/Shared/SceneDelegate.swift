@@ -13,8 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        print("!@#$")
-        print(UserDefaultsManager.shared().Email)
+        
         if let email = UserDefaultsManager.shared().Email , email != "" {
             print("in 1")
             if let windowScene = scene as? UIWindowScene {

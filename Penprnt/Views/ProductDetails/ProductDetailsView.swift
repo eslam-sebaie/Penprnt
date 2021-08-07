@@ -18,10 +18,6 @@ class ProductDetailsView: UIView {
     @IBOutlet weak var productRate: CosmosView!
     @IBOutlet weak var productRateCount: UILabel!
     
-    @IBOutlet weak var bestSellerView: UIView!
-    
-    @IBOutlet weak var bestSellerViewHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var productDescription: UILabel!
     
     @IBOutlet weak var colorView: UIView!
@@ -55,13 +51,13 @@ class ProductDetailsView: UIView {
     func updateUI(){
         halfCornerView.setCornerRadius(radius: 25)
         halfCornerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        bestSellerView.setCornerRadius(radius: 13)
+      
         addToCartDesign.setCornerRadius(radius: 8)
         noteTextView.setBCdesign(borderWidth: 1, borderColor: ColorName.welcomeBorder.color, radius: 8)
     }
     
     func setDetailsNew(info: productInfo) {
-        print("@##@#@#@@##@")
+        
         productImage.sd_setImage(with: URL(string: info.image ?? ""), completed: nil)
         productName.text = info.name
         productPrice.text = "KD \(info.price ?? "")"

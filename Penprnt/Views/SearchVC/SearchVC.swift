@@ -21,6 +21,9 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var receivePrice = ""
     var checkFilter = false
     var colorArray = [String]()
+    var receiveSubCat = 0
+    var filterData = [FilterInfo]()
+    var searchData = [searchInfo]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchView.updateUI()
@@ -35,16 +38,19 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     func getFilterProduct() {
-        APIManager.filterColorPrice(id: receiveID, productColor: colorArray, price: receivePrice) { (response) in
+        self.searchView.showLoader()
+        APIManager.filterColorPrice(idSub: receiveSubCat, color: receiveColor, price: receivePrice) { (response) in
             switch response {
             case .failure(let err):
                 print(err)
             case .success(let result):
+                self.filterData = result.data ?? []
                 for i in result.data {
                     self.imageArray.append(i.image ?? "")
                     self.nameArray.append(i.name ?? "")
                     self.priceArray.append(i.price ?? "")
                 }
+                self.searchView.hideLoader()
                 self.searchView.productTableView.reloadData()
             }
         }
@@ -67,7 +73,15 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.productImage.layer.cornerRadius = 16
         cell.productImage.layer.masksToBounds = true
         cell.mainView.setCornerRadius(radius: 16)
-//        cell.mainView.dropShadow(radius: 16, shadow: 2)
+        cell.mainView.dropShadow(radius: 16, shadow: 2)
+        if checkFilter {
+            cell.productRate.rating = Double(filterData[indexPath.row].totalRate ?? "") ?? 0.0
+            cell.rateCount.text = "(\(filterData[indexPath.row].totalCountUser ?? "0"))"
+        }
+        else {
+            cell.productRate.rating = Double(searchData[indexPath.row].totalRate ?? "") ?? 0.0
+            cell.rateCount.text = "(\(searchData[indexPath.row].totalCountUser ?? "0"))"
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -92,12 +106,15 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.show_Alert("Please!", "Enter Search Name")
             return
         }
+        self.searchView.showLoader()
         self.searchView.searchLabel.text = "Search Results for \(name)"
-        APIManager.searchName(name: name) { (response) in
+        APIManager.searchName(name: name, idSub: receiveSubCat) { (response) in
             switch response{
             case .failure(let err):
                 print(err)
             case .success(let result):
+                self.searchData = result.data ?? []
+                self.searchView.hideLoader()
                 if result.message != "faild"{
                     for i in result.data! {
                         self.nameArray.append(i.name ?? "")
@@ -105,7 +122,6 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         self.priceArray.append(i.price ?? "")
                         
                     }
-                    
                     self.searchView.productTableView.reloadData()
                 }
                 else {

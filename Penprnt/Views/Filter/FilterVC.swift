@@ -11,7 +11,7 @@ class FilterVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
 
     
     @IBOutlet var filterView: FilterView!
-    var catID = 0
+    var subCatID = 0
     var catName = ""
     var colorArray = [0x0000FF, 0xFF0000, 0xFFFF00, 0xFF6600, 0x00FF00, 0x6600FF, 0x000000, 0xFFFFFF]
     var colorArrayStr = ["#0000FF", "#FF0000", "#FFFF00", "#FF6600", "#00FF00", "#6600FF", "#000000", "#FFFFFF"]
@@ -66,7 +66,7 @@ class FilterVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         else {
             let search = SearchVC.create()
             search.checkFilter = true
-            search.receiveID = catID
+            search.receiveSubCat = subCatID
             search.receiveColor = colorChoosen
             search.receivePrice = filterView.sliderTxt
             self.present(search, animated: true, completion: nil)

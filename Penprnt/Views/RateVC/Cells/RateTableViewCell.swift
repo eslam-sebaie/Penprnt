@@ -9,8 +9,6 @@ import UIKit
 import Cosmos
 class RateTableViewCell: UITableViewCell {
 
-    
-    
     @IBOutlet weak var rateImage: UIImageView!
     @IBOutlet weak var rateName: UILabel!
     @IBOutlet weak var rateDate: UILabel!
@@ -22,6 +20,7 @@ class RateTableViewCell: UITableViewCell {
         super.awakeFromNib()
         rateImage.setCornerRadius(radius: 24)
         rateView.settings.updateOnTouch = false
+        rateView.settings.fillMode = .precise
         // Initialization code
     }
 

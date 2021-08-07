@@ -18,18 +18,25 @@ class APIManager {
             completion(response)
         }
     }
-    class func getCategories(completion: @escaping(Result<CategoryResponse, Error>) -> Void ) {
-        request(APIRouter.getCategories) { (response) in
+    class func getCategories(vendorId: String, completion: @escaping(Result<CategoryResponse, Error>) -> Void ) {
+        request(APIRouter.getCategories(vendorId)) { (response) in
             completion(response)
         }
     }
+    class func getSubCategories(categoryId: String, completion: @escaping(Result<SubCatResponse, Error>) -> Void ) {
+        request(APIRouter.getSubCategories(categoryId)) { (response) in
+            completion(response)
+        }
+    }
+    
+    
     class func updateAddress(emailNumber: String, address: String, lat: String, lng: String ,completion: @escaping() -> Void ) {
         request1(APIRouter.updateAddress(emailNumber,address,lat,lng)) { (_,_) in
             completion()
         }
     }
-    class func searchName(name: String, completion: @escaping(Result<searchResponse, Error>) -> Void ) {
-        request(APIRouter.searchProduct(name)) { (response) in
+    class func searchName(name: String,idSub: Int, completion: @escaping(Result<searchResponse, Error>) -> Void ) {
+        request(APIRouter.searchProduct(name,idSub)) { (response) in
             completion(response)
         }
     }
@@ -44,13 +51,13 @@ class APIManager {
         }
     }
     
-    class func productsNew(id: Int, completion: @escaping(Result<productResponse, Error>) -> Void ) {
-        request(APIRouter.productsNew(id)) { (response) in
+    class func productsNew(id: Int, idSub: Int, idVendor: Int ,completion: @escaping(Result<productResponse, Error>) -> Void ) {
+        request(APIRouter.productsNew(id,idSub,idVendor)) { (response) in
             completion(response)
         }
     }
-    class func productsSale(id: Int, completion: @escaping(Result<MostProductResponse, Error>) -> Void ) {
-        request(APIRouter.productsSale(id)) { (response) in
+    class func productsSale(idSub: Int, completion: @escaping(Result<MostProductResponse, Error>) -> Void ) {
+        request(APIRouter.productsSale(idSub)) { (response) in
             completion(response)
         }
     }
@@ -65,12 +72,26 @@ class APIManager {
         }
     }
     
-    class func filterColorPrice(id: Int, productColor: [String], price: String,completion: @escaping(Result<FilterResponse, Error>) -> Void ) {
-        request(APIRouter.filterByPriceColor(id, productColor, price)) { (response) in
+    class func filterColorPrice(idSub: Int, color: String, price: String,completion: @escaping(Result<FilterResponse, Error>) -> Void ) {
+        request(APIRouter.filterByPriceColor(idSub, color, price)) { (response) in
             completion(response)
         }
     }
-    
+    class func getAllStors(completion: @escaping(Result<StoreResponse, Error>) -> Void ) {
+        request(APIRouter.getAllStors) { (response) in
+            completion(response)
+        }
+    }
+    class func postRate(emailNumber: String, star: String, comment: String, productId: Int, date: String,completion: @escaping() -> Void ) {
+        request1(APIRouter.postRate(emailNumber,star,comment,productId,date)) { (_,_) in
+            completion()
+        }
+    }
+    class func getRate(productId: Int, completion: @escaping(Result<RateResponse, Error>) -> Void ) {
+        request(APIRouter.getRate(productId)) { (response) in
+            completion(response)
+        }
+    }
     class func uploadPhoto(image: UIImage, completion: @escaping (_ error: Error?, _ upImage: uploadImage?)-> Void){
         
         AF.upload(multipartFormData: { (form: MultipartFormData) in

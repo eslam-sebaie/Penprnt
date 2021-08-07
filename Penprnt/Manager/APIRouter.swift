@@ -14,22 +14,26 @@ enum APIRouter: URLRequestConvertible {
     // MARK:- Registration
     case userRegister(_ name: String,_ emailNumber: String, _ address: String,_ dateOfBirth: String, _ gender: String, _ phoneNumber: String ,_ password: String, _ lat: String, _ lng: String, _ points: String)
     case userLogin(_ emailNumber: String,_ password: String)
-    case getCategories
+    case getCategories(_ vendorId: String)
+    case getSubCategories(_ categoryId: String)
     case updateAddress(_ emailNumber: String, _ address: String, _ lat: String, _ lng: String)
-    case searchProduct(_ name: String)
+    case searchProduct(_ name: String, _ idSub: Int)
     case updateImage(_ emailNumber: String, _ image: String)
     case editProfile(_ emailNumber: String, _ name: String, _ phone: String, _ dateOfBirth: String, _ address: String, _ gender: String,_ password: String, _ points: String)
-    case productsNew(_ id: Int)
-    case productsSale(_ id: Int)
+    case productsNew(_ id: Int, _ idSub: Int, _ idVendor: Int)
+    case productsSale(_ idSub: Int)
     case searchUser(_ emailNumber: String)
     case filterAlph(_ id: Int)
-    case filterByPriceColor(_ id: Int, _ productColor: [String], _ price: String)
+    case filterByPriceColor(_ idSub: Int, _ color: String, _ price: String)
+    case getAllStors
+    case postRate(_ emailNumber: String, _ star: String, _ comment: String, _ productId: Int, _ date: String)
+    case getRate(_ productId: Int)
     // MARK: - HttpMethod
     private var method: HTTPMethod {
         switch self {
-        case .userRegister, .userLogin, .updateAddress, .updateImage, .editProfile:
+        case .userRegister, .userLogin, .updateAddress, .updateImage, .editProfile, .postRate:
             return .post
-        case .getCategories, .searchProduct, .productsNew, .productsSale, .searchUser, .filterAlph, .filterByPriceColor:
+        case .getCategories, .getSubCategories ,.searchProduct, .productsNew, .productsSale, .searchUser, .filterAlph, .filterByPriceColor, .getAllStors, .getRate:
             return .get
         default:
             return .delete
@@ -45,24 +49,35 @@ enum APIRouter: URLRequestConvertible {
             return [ParameterKeys.name: name, ParameterKeys.email: emailNumber, ParameterKeys.address: address, ParameterKeys.dateOfBirth: dateOfBirth, ParameterKeys.gender: gender,ParameterKeys.phone: phoneNumber, ParameterKeys.password: password, "lat": lat, "lng": lng, "points": points]
         case .userLogin(let emailNumber, let password):
             return [ParameterKeys.email: emailNumber, ParameterKeys.password: password]
+        
+        case .getCategories(let vendorId):
+            return ["vendorId": vendorId]
+            
+        case .getSubCategories(let categoryId):
+            return ["categoryId": categoryId]
+            
         case .updateAddress(let emailNumber ,let address, let lat , let lng):
             return [ParameterKeys.email: emailNumber,ParameterKeys.address: address, "lat": lat, "lng": lng]
-        case .searchProduct(let name):
-            return ["name": name]
+        case .searchProduct(let name, let idSub):
+            return ["name": name, "idSub": idSub]
         case .updateImage(let emailNumber, let image):
             return [ParameterKeys.email: emailNumber, "image": image]
         case .editProfile(let emailNumber, let name, let phone, let dateOfBirth,let address, let gender, let password, let points):
             return [ParameterKeys.email: emailNumber, ParameterKeys.name: name, ParameterKeys.phone: phone, ParameterKeys.dateOfBirth: dateOfBirth,ParameterKeys.address: address,ParameterKeys.gender: gender, ParameterKeys.password: password, "points": points ]
-        case .productsNew(let id):
-            return ["id": id]
-        case .productsSale(let id):
-            return ["id": id]
+        case .productsNew(let id, let idSub, let idVendor):
+            return ["id": id, "idSub": idSub, "idVendor": idVendor]
+        case .productsSale(let idSub):
+            return ["idSub": idSub]
         case .searchUser(let emailNumber):
             return [ParameterKeys.email: emailNumber]
         case .filterAlph(let id):
             return ["id": id]
-        case .filterByPriceColor(let id, let productColor, let price):
-            return ["id": id, "productColor": productColor, "price": price]
+        case .filterByPriceColor(let idSub, let color, let price):
+            return ["idSub": idSub, "color": color, "price": price]
+        case .postRate(let emailNumber, let star,let comment,let productId,let date):
+            return ["emailNumber": emailNumber, "star": star, "comment": comment,"productId": productId, "date":date]
+        case .getRate(let productId):
+            return ["productId": productId]
         default:
             return nil
         }
@@ -77,6 +92,8 @@ enum APIRouter: URLRequestConvertible {
             return URLs.login
         case .getCategories:
             return URLs.createCategory
+        case .getSubCategories:
+            return URLs.subCategory
         case .updateAddress:
             return URLs.updateAddress
         case .searchProduct:
@@ -95,6 +112,12 @@ enum APIRouter: URLRequestConvertible {
             return URLs.filterAlph
         case .filterByPriceColor:
             return URLs.filterByPriceColor
+        case .getAllStors:
+            return URLs.alltStoreWithCount
+        case .postRate:
+            return URLs.rate
+        case .getRate:
+            return URLs.rate
         }
     }
     

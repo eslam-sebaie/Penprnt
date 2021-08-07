@@ -18,6 +18,7 @@ class EditProfileVC: UIViewController {
     }
     class func create() -> EditProfileVC {
         let editProfileVC: EditProfileVC = UIViewController.create(storyboardName: Storyboards.profile, identifier: ViewControllers.editProfileVC)
+        
         return editProfileVC
     }
     override func viewWillAppear(_ animated: Bool) {
