@@ -28,12 +28,16 @@ enum APIRouter: URLRequestConvertible {
     case getAllStors
     case postRate(_ emailNumber: String, _ star: String, _ comment: String, _ productId: Int, _ date: String)
     case getRate(_ productId: Int)
+    case makeFavorite(_ emailNumber: String, _ id: Int)
+    case getFavorite(_ emailNumber: String)
+    case setCart(_ emailNumber: String, _ product_id: Int, _ name: String, _ price: String, _ quantity: String, _ Color: String, _ size: String, _ image: String)
+    case getCart(_ emailNumber: String)
     // MARK: - HttpMethod
     private var method: HTTPMethod {
         switch self {
-        case .userRegister, .userLogin, .updateAddress, .updateImage, .editProfile, .postRate:
+        case .userRegister, .userLogin, .updateAddress, .updateImage, .editProfile, .postRate, .makeFavorite, .setCart:
             return .post
-        case .getCategories, .getSubCategories ,.searchProduct, .productsNew, .productsSale, .searchUser, .filterAlph, .filterByPriceColor, .getAllStors, .getRate:
+        case .getCategories, .getSubCategories ,.searchProduct, .productsNew, .productsSale, .searchUser, .filterAlph, .filterByPriceColor, .getAllStors, .getRate, .getCart, .getFavorite:
             return .get
         default:
             return .delete
@@ -78,6 +82,14 @@ enum APIRouter: URLRequestConvertible {
             return ["emailNumber": emailNumber, "star": star, "comment": comment,"productId": productId, "date":date]
         case .getRate(let productId):
             return ["productId": productId]
+        case .makeFavorite(let emailNumber, let id):
+            return ["emailNumber": emailNumber, "id": id]
+        case .setCart(let emailNumber, let product_id,let name,let price,let quantity,let Color,let size,let image):
+            return ["emailNumber": emailNumber, "product_id": product_id, "name": name, "price": price, "quantity": quantity, "Color": Color, "size": size, "image": image]
+        case .getCart(let emailNumber):
+            return [ParameterKeys.email: emailNumber]
+        case .getFavorite(let emailNumber):
+            return [ParameterKeys.email: emailNumber]
         default:
             return nil
         }
@@ -118,6 +130,14 @@ enum APIRouter: URLRequestConvertible {
             return URLs.rate
         case .getRate:
             return URLs.rate
+        case .makeFavorite:
+            return URLs.favorite
+        case .getFavorite:
+            return URLs.favorite
+        case .setCart:
+            return URLs.cart
+        case .getCart:
+            return URLs.cart
         }
     }
     

@@ -50,6 +50,9 @@ struct URLs {
     static let alltStoreWithCount = "alltStoreWithCount"
     static let subCategory = "SubCategory"
     static let rate = "rate"
+    static let favorite = "favorite"
+    static let cart = "cart"
+    
 }
 struct ParameterKeys {
     static let name = "name"

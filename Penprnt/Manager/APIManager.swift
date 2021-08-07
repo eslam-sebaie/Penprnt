@@ -35,7 +35,7 @@ class APIManager {
             completion()
         }
     }
-    class func searchName(name: String,idSub: Int, completion: @escaping(Result<searchResponse, Error>) -> Void ) {
+    class func searchName(name: String,idSub: Int, completion: @escaping(Result<productResponse, Error>) -> Void ) {
         request(APIRouter.searchProduct(name,idSub)) { (response) in
             completion(response)
         }
@@ -72,7 +72,7 @@ class APIManager {
         }
     }
     
-    class func filterColorPrice(idSub: Int, color: String, price: String,completion: @escaping(Result<FilterResponse, Error>) -> Void ) {
+    class func filterColorPrice(idSub: Int, color: String, price: String,completion: @escaping(Result<productResponse, Error>) -> Void ) {
         request(APIRouter.filterByPriceColor(idSub, color, price)) { (response) in
             completion(response)
         }
@@ -87,8 +87,31 @@ class APIManager {
             completion()
         }
     }
+    
     class func getRate(productId: Int, completion: @escaping(Result<RateResponse, Error>) -> Void ) {
         request(APIRouter.getRate(productId)) { (response) in
+            completion(response)
+        }
+    }
+    
+    class func makeFavorite(emailNumber: String, id: Int , completion: @escaping() -> Void ) {
+        request1(APIRouter.makeFavorite(emailNumber,id)) { (_,_) in
+            completion()
+        }
+    }
+    
+    class func setCart(emailNumber: String, product_id: Int, name: String, price: String, quantity: String, Color: String, size: String, image: String,completion: @escaping() -> Void ) {
+        request1(APIRouter.setCart(emailNumber,product_id,name,price,quantity,Color,size,image)) { (_,_) in
+            completion()
+        }
+    }
+    class func getCart(emailNumber: String, completion: @escaping(Result<CartResponse, Error>) -> Void ) {
+        request(APIRouter.getCart(emailNumber)) { (response) in
+            completion(response)
+        }
+    }
+    class func getFavorite(emailNumber: String, completion: @escaping(Result<FavoriteResponse, Error>) -> Void ) {
+        request(APIRouter.getFavorite(emailNumber)) { (response) in
             completion(response)
         }
     }

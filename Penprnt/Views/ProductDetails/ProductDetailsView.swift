@@ -12,6 +12,7 @@ class ProductDetailsView: UIView {
     
     @IBOutlet weak var productImage: UIImageView!
     
+    @IBOutlet weak var saveView: UIView!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productPrice: UILabel!
@@ -44,11 +45,16 @@ class ProductDetailsView: UIView {
     @IBOutlet weak var upperColorHeight: NSLayoutConstraint!
     
     @IBOutlet weak var upperSizeHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var favoriteDesign: UIButton!
+    
     var itemSize = CGSize(width: 0, height: 0)
     var itemSize1 = CGSize(width: 0, height: 0)
     
     
     func updateUI(){
+        saveView.isHidden = true
+        saveView.dropShadow(radius: 10, shadow: 2)
         halfCornerView.setCornerRadius(radius: 25)
         halfCornerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
       

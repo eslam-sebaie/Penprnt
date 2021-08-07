@@ -55,7 +55,7 @@ struct FilterInfo: Codable {
     let totalRate: String?
     let totalCountUser: String?
     let productColor: [String]?
-   
+    
     let isActive: Bool?
     let vendorID, categoryID, createdAt, updatedAt: String?
 

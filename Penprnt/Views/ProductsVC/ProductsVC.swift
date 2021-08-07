@@ -170,7 +170,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
             let cell = productsView.newProductCollectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as! NewCollectionViewCell
             cell.newProductName.text = nameArray[indexPath.row]
             cell.newProductImage.sd_setImage(with: URL(string: imageArray[indexPath.row]), completed: nil)
-            cell.newProductPrice.text = priceArray[indexPath.row]
+            cell.newProductPrice.text = "\(priceArray[indexPath.row]) KD"
             cell.favImage.isHidden = true
             cell.newProductImage.layer.cornerRadius = 8
             cell.newProductImage.layer.masksToBounds = true
@@ -187,7 +187,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
             let cell = productsView.productCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SaleCollectionViewCell
             cell.productName.text = nameArray1[indexPath.row]
             cell.productImage.sd_setImage(with: URL(string: imageArray1[indexPath.row]), completed: nil)
-            cell.productPrice.text = priceArray1[indexPath.row]
+            cell.productPrice.text = "\(priceArray1[indexPath.row]) KD"
             cell.favImage.isHidden = true
             cell.productImage.layer.cornerRadius = 8
             cell.productImage.layer.masksToBounds = true

@@ -24,12 +24,12 @@ struct productInfo: Codable {
     let totalRate: String?
     let totalCountUser: String?
     let isActive: Bool?
-    let vendorID, categoryID, createdAt, updatedAt: String?
+    let vendorID, categoryID, subcategoryId ,createdAt, updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id, image, name
         case datumDescription = "description"
-        case itemNo, brandName, price, wholeSale, quantity, size, barCode, date, design, productColor, isActive,totalRate,totalCountUser
+        case itemNo, brandName, price, wholeSale, quantity, size, barCode, date, design, productColor, isActive,totalRate,totalCountUser, subcategoryId
         case vendorID = "vendorId"
         case categoryID = "categoryId"
         case createdAt = "created_at"
@@ -68,15 +68,42 @@ struct Products: Codable {
     let totalRate: String?
     let totalCountUser: String?
     let isActive: Bool?
-    let vendorID, categoryID, createdAt, updatedAt: String?
+    let vendorID, categoryID, subcategoryId ,createdAt, updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id, image, name
         case productsDescription = "description"
-        case itemNo, brandName, price, wholeSale, quantity, size, barCode, date, design, productColor, isActive, totalRate, totalCountUser
+        case itemNo, brandName, price, wholeSale, quantity, size, barCode, date, design, productColor, isActive, totalRate, totalCountUser, subcategoryId
         case vendorID = "vendorId"
         case categoryID = "categoryId"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
     }
 }
+
+
+struct CartResponse: Codable {
+    let data: [CartInfo]?
+    let message: String?
+}
+struct CartInfo: Codable {
+    let id: Int?
+    let image: String?
+    let name: String?
+    let price, quantity: String?
+    let size: String?
+    let product_id: String?
+    let Color: String?
+    
+    let  user_id, createdAt, updatedAt: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id, image, name, price
+        case quantity, Color, size
+        case product_id
+        case user_id
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+}
+

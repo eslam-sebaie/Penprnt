@@ -11,33 +11,112 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
     
     
     @IBOutlet var productDetailsView: ProductDetailsView!
-    var receiveInfo = productInfo(id: 0, image: "", name: "", datumDescription: "", itemNo: "", brandName: "", price: "", wholeSale: "", quantity: "", size: [], barCode: "", date: "", design: "", productColor: [], totalRate: "", totalCountUser: "", isActive: false, vendorID: "", categoryID: "", createdAt: "", updatedAt: "")
+    var receiveInfo = productInfo(id: 0, image: "", name: "", datumDescription: "", itemNo: "", brandName: "", price: "", wholeSale: "", quantity: "", size: [], barCode: "", date: "", design: "", productColor: [], totalRate: "", totalCountUser: "", isActive: false, vendorID: "", categoryID: "", subcategoryId: "", createdAt: "", updatedAt: "")
     
-    var receiveInfo1 = MostProductInfo(productID: "", id: 0, products: Products(id: 0, image: "", name: "", productsDescription: "", itemNo: "", brandName: "", price: "", wholeSale: "", quantity: "", size: [], barCode: "", date: "", design: "", productColor: [], totalRate: "", totalCountUser: "", isActive: false, vendorID: "", categoryID: "", createdAt: "", updatedAt: ""))
+    var receiveInfo1 = MostProductInfo(productID: "", id: 0, products: Products(id: 0, image: "", name: "", productsDescription: "", itemNo: "", brandName: "", price: "", wholeSale: "", quantity: "", size: [], barCode: "", date: "", design: "", productColor: [], totalRate: "", totalCountUser: "", isActive: false, vendorID: "", categoryID: "", subcategoryId: "", createdAt: "", updatedAt: ""))
     
     var checkNew = false
     var productID = 0
     var totalRate = ""
     var totalRateCount = ""
+    var colorChoosen = ""
+    var sizeChoosen = ""
+    var colorCheck = false
+    var sizeCheck = false
+    var productIDFavCheck = false
+    
+    
+    var name = ""
+    var price = ""
+    var quantity = ""
+    var size = ""
+    var image = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("!@$$$")
-        print(checkNew)
-        print(receiveInfo)
-        print(receiveInfo1)
         
         colorCollectionViewSpacing()
         sizeCollectionViewSpacing()
         productDetailsView.updateUI()
+        
         if checkNew {
             productDetailsView.setDetailsNew(info: receiveInfo)
+            name = receiveInfo.name ?? ""
+            price = receiveInfo.price ?? ""
+            quantity = receiveInfo.quantity ?? ""
+            size = (receiveInfo.size.first ?? "") ?? ""
+            image = receiveInfo.image ?? ""
             
+            if receiveInfo.productColor?.count == 0 {
+                colorCheck = false
+            }
+            else {
+                colorCheck = true
+            }
+            if receiveInfo.size.count == 0 {
+                sizeCheck = false
+            }
+            else {
+                sizeCheck = true
+            }
         }
         else {
             productDetailsView.setDetailsMostSale(info: receiveInfo1)
+            name = receiveInfo1.products.name ?? ""
+            price = receiveInfo1.products.price ?? ""
+            quantity = receiveInfo1.products.quantity ?? ""
+            size = (receiveInfo1.products.size.first ?? "") ?? ""
+            image = receiveInfo1.products.image ?? ""
+            
+            if receiveInfo1.products.productColor?.count == 0 {
+                colorCheck = false
+            }
+            else {
+                colorCheck = true
+            }
+            if receiveInfo1.products.size.count == 0 {
+                sizeCheck = false
+            }
+            else {
+                sizeCheck = true
+            }
         }
+        getFavorite()
         productDetailsView.noteTextView.delegate = self
         
+    }
+    func getFavorite() {
+        if UserDefaultsManager.shared().Email == nil || UserDefaultsManager.shared().Email == "" {
+            print("OK")
+        }
+        else {
+            if checkNew {
+                productID = receiveInfo.id
+            }
+            else {
+                productID = receiveInfo1.products.id
+            }
+            self.productDetailsView.showLoader()
+            APIManager.getFavorite(emailNumber: UserDefaultsManager.shared().Email ?? "") { (response) in
+                switch response {
+                case .failure(let err):
+                    print(err)
+                    self.productDetailsView.hideLoader()
+                    self.show_Alert("Sorry!", "SomeThing Went Wrong.")
+                case .success(let result):
+                    for i in result.data ?? [] {
+                        print("!@#$$")
+                        print(self.productID)
+                        print(Int(i.productID))
+                        if self.productID == Int(i.productID) {
+                            self.productDetailsView.favoriteDesign.setImage(#imageLiteral(resourceName: "love"), for: .normal)
+                            self.productIDFavCheck = true
+                        }
+                    }
+                    self.productDetailsView.hideLoader()
+                }
+            }
+            
+        }
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -85,7 +164,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
             let x = Double(totalRate) ?? 0.0
             let y = Double(round(10 * x)/10)
             totalRate = String(y)
-         
+            
             totalRateCount = receiveInfo.totalCountUser ?? "0"
         }
         else {
@@ -107,9 +186,86 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
     
     
     @IBAction func cartPressed(_ sender: Any) {
-        if productDetailsView.quantityLabel.text == "0.0" {
-            self.show_Alert("Please!", "Enter Quantity.")
+        if UserDefaultsManager.shared().Email == nil || UserDefaultsManager.shared().Email == "" {
+            showAlert(title: "Sorry No Account.", massage: "Do You Want To Register?", present: self, titleBtn: "OK") {
+                let signUp = SignUpVC.create()
+                self.present(signUp, animated: true, completion: nil)
+            }
         }
+        else {
+            
+            if colorCheck {
+                if colorChoosen == "" {
+                    self.show_Alert("Please!", "Choose Color.")
+                }
+                else {
+                    if productDetailsView.quantityLabel.text == "0.0" {
+                        self.show_Alert("Please!", "Enter Quantity.")
+                    }
+                    else {
+                        self.productDetailsView.showLoader()
+                        APIManager.setCart(emailNumber: UserDefaultsManager.shared().Email ?? "", product_id: productID, name: name, price: price, quantity: self.productDetailsView.quantityLabel.text ?? "", Color: colorChoosen, size: size, image: image) {
+                          
+                            
+                                self.productDetailsView.hideLoader()
+                                self.dismiss(animated: true, completion: nil)
+                            
+                        }
+                    }
+                }
+            }
+            else {
+                if productDetailsView.quantityLabel.text == "0.0" {
+                    self.show_Alert("Please!", "Enter Quantity.")
+                }
+                else {
+                    self.productDetailsView.showLoader()
+                    APIManager.setCart(emailNumber: UserDefaultsManager.shared().Email ?? "", product_id: productID, name: name, price: price, quantity: self.productDetailsView.quantityLabel.text ?? "", Color: colorChoosen, size: size, image: image) {
+                      
+                        
+                            self.productDetailsView.hideLoader()
+                            self.dismiss(animated: true, completion: nil)
+                        
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    @IBAction func favoritePressed(_ sender: Any) {
+        
+        if UserDefaultsManager.shared().Email == nil || UserDefaultsManager.shared().Email == "" {
+            showAlert(title: "Sorry No Account.", massage: "Do You Want To Register?", present: self, titleBtn: "OK") {
+                let signUp = SignUpVC.create()
+                self.present(signUp, animated: true, completion: nil)
+            }
+        }
+        else {
+            if checkNew {
+                productID = receiveInfo.id
+            }
+            else {
+                productID = receiveInfo1.products.id
+            }
+            if productIDFavCheck {
+                print("Will Delete IT")
+            }
+            else {
+                self.productDetailsView.showLoader()
+                APIManager.makeFavorite(emailNumber: UserDefaultsManager.shared().Email ?? "", id: productID) {
+                    self.productDetailsView.hideLoader()
+                    self.productDetailsView.favoriteDesign.setImage(#imageLiteral(resourceName: "love"), for: .normal)
+                    
+                }
+            }
+        }
+    }
+    
+    
+    
+    @objc func popupHide() {
+        self.productDetailsView.saveView.isHidden = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -166,27 +322,38 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
                 return cell
             }
         }
-       
-    }
-        
-//        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//            colorChoosen = colorArrayStr[indexPath.row]
-//            filterView.savedView.isHidden = false
-//            self.perform(#selector(self.popupHide), with: self, afterDelay: 1)
-//        }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let yourWidth = 40
-            let yourHeight = 40
-            
-            return CGSize(width: yourWidth, height: yourHeight)
-        }
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets.zero
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return 16
-        }
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if checkNew {
+            if collectionView == productDetailsView.colorCollectionView {
+                colorChoosen =  receiveInfo.productColor?[indexPath.row] ?? ""
+                productDetailsView.saveView.isHidden = false
+                self.perform(#selector(self.popupHide), with: self, afterDelay: 1)
+            }
+        }
+        else {
+            if collectionView == productDetailsView.colorCollectionView {
+                colorChoosen =  receiveInfo1.products.productColor?[indexPath.row] ?? ""
+                productDetailsView.saveView.isHidden = false
+                self.perform(#selector(self.popupHide), with: self, afterDelay: 1)
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let yourWidth = 40
+        let yourHeight = 40
+        
+        return CGSize(width: yourWidth, height: yourHeight)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
+    }
+    
+}

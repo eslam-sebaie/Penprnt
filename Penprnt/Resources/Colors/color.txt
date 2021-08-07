@@ -1,3 +1,4 @@
 "welcomeBorder": #D6D6D6
 "mainColor": #00AEEF
 "white": #FFFFFF
+"borderColor": #EFEFF4

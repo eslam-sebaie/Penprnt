@@ -22,8 +22,8 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var checkFilter = false
     var colorArray = [String]()
     var receiveSubCat = 0
-    var filterData = [FilterInfo]()
-    var searchData = [searchInfo]()
+    var filterData = [productInfo]()
+    var searchData = [productInfo]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchView.updateUI()
@@ -44,8 +44,8 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             case .failure(let err):
                 print(err)
             case .success(let result):
-                self.filterData = result.data ?? []
-                for i in result.data {
+                self.filterData = result.data
+                for i in result.data ?? [] {
                     self.imageArray.append(i.image ?? "")
                     self.nameArray.append(i.name ?? "")
                     self.priceArray.append(i.price ?? "")
@@ -77,13 +77,31 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if checkFilter {
             cell.productRate.rating = Double(filterData[indexPath.row].totalRate ?? "") ?? 0.0
             cell.rateCount.text = "(\(filterData[indexPath.row].totalCountUser ?? "0"))"
+            cell.productPrice.text = "\(filterData[indexPath.row].price ?? "") KD"
         }
         else {
             cell.productRate.rating = Double(searchData[indexPath.row].totalRate ?? "") ?? 0.0
             cell.rateCount.text = "(\(searchData[indexPath.row].totalCountUser ?? "0"))"
+            cell.productPrice.text = "\(searchData[indexPath.row].price ?? "") KD"
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if checkFilter {
+            let proDetails = ProductDetailsVC.create()
+            proDetails.receiveInfo = filterData[indexPath.row]
+            proDetails.checkNew = true
+            self.present(proDetails, animated: true, completion: nil)
+        }
+        else {
+            let proDetails = ProductDetailsVC.create()
+            proDetails.receiveInfo = searchData[indexPath.row]
+            proDetails.checkNew = true
+            self.present(proDetails, animated: true, completion: nil)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let rotateTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
         cell.layer.transform = rotateTransform
@@ -116,11 +134,10 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.searchData = result.data ?? []
                 self.searchView.hideLoader()
                 if result.message != "faild"{
-                    for i in result.data! {
+                    for i in result.data {
                         self.nameArray.append(i.name ?? "")
                         self.imageArray.append(i.image ?? "")
                         self.priceArray.append(i.price ?? "")
-                        
                     }
                     self.searchView.productTableView.reloadData()
                 }

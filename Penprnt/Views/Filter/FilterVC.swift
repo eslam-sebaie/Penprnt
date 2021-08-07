@@ -8,7 +8,7 @@
 import UIKit
 
 class FilterVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
+    
     
     @IBOutlet var filterView: FilterView!
     var subCatID = 0
@@ -17,6 +17,7 @@ class FilterVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     var colorArrayStr = ["#0000FF", "#FF0000", "#FFFF00", "#FF6600", "#00FF00", "#6600FF", "#000000", "#FFFFFF"]
     var colorChoosen = ""
     var price = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         filterCollectionViewSpacing()
@@ -26,7 +27,7 @@ class FilterVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         // Do any additional setup after loading the view.
     }
     
-  
+    
     
     
     func filterCollectionViewSpacing() {
@@ -60,18 +61,12 @@ class FilterVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     }
     
     @IBAction func filterPressed(_ sender: Any) {
-        if colorChoosen == "" && filterView.sliderTxt == "" {
-            self.show_Alert("Sorry!", "Choose Color Or Price To Filter.")
-        }
-        else {
-            let search = SearchVC.create()
-            search.checkFilter = true
-            search.receiveSubCat = subCatID
-            search.receiveColor = colorChoosen
-            search.receivePrice = filterView.sliderTxt
-            self.present(search, animated: true, completion: nil)
-        }
-       
+        let search = SearchVC.create()
+        search.checkFilter = true
+        search.receiveSubCat = subCatID
+        search.receiveColor = colorChoosen
+        search.receivePrice = filterView.sliderTxt
+        self.present(search, animated: true, completion: nil)
     }
     
     
@@ -81,16 +76,15 @@ class FilterVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colorArray.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = filterView.colorCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FilterCollectionViewCell
+        let cell = filterView.colorCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FilterCollectionViewCell
         cell.colorView.backgroundColor = UIColor(rgb: colorArray[indexPath.row])
         cell.colorView.setCornerRadius(radius: 8)
-            return cell
-       
-       
+        return cell
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -102,7 +96,7 @@ class FilterVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let yourWidth = 40
         let yourHeight = 40
-
+        
         return CGSize(width: yourWidth, height: yourHeight)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
