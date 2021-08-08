@@ -100,8 +100,8 @@ class APIManager {
         }
     }
     
-    class func setCart(emailNumber: String, product_id: Int, name: String, price: String, quantity: String, Color: String, size: String, image: String,completion: @escaping() -> Void ) {
-        request1(APIRouter.setCart(emailNumber,product_id,name,price,quantity,Color,size,image)) { (_,_) in
+    class func setCart(emailNumber: String, product_id: Int, name: String, price: String, quantity: String, Color: String, size: String, image: String,note: String,completion: @escaping() -> Void ) {
+        request1(APIRouter.setCart(emailNumber,product_id,name,price,quantity,Color,size,image, note)) { (_,_) in
             completion()
         }
     }

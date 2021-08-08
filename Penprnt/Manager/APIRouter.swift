@@ -30,7 +30,7 @@ enum APIRouter: URLRequestConvertible {
     case getRate(_ productId: Int)
     case makeFavorite(_ emailNumber: String, _ id: Int)
     case getFavorite(_ emailNumber: String)
-    case setCart(_ emailNumber: String, _ product_id: Int, _ name: String, _ price: String, _ quantity: String, _ Color: String, _ size: String, _ image: String)
+    case setCart(_ emailNumber: String, _ product_id: Int, _ name: String, _ price: String, _ quantity: String, _ Color: String, _ size: String, _ image: String, _ note: String)
     case getCart(_ emailNumber: String)
     case deleteFavorite(_ id: Int)
     case deleteCart(_ id: Int)
@@ -91,8 +91,8 @@ enum APIRouter: URLRequestConvertible {
             return ["productId": productId]
         case .makeFavorite(let emailNumber, let id):
             return ["emailNumber": emailNumber, "id": id]
-        case .setCart(let emailNumber, let product_id,let name,let price,let quantity,let Color,let size,let image):
-            return ["emailNumber": emailNumber, "product_id": product_id, "name": name, "price": price, "quantity": quantity, "Color": Color, "size": size, "image": image]
+        case .setCart(let emailNumber, let product_id,let name,let price,let quantity,let Color,let size,let image, let note):
+            return ["emailNumber": emailNumber, "product_id": product_id, "name": name, "price": price, "quantity": quantity, "Color": Color, "size": size, "image": image, "note": note]
         case .getCart(let emailNumber):
             return [ParameterKeys.email: emailNumber]
         case .getFavorite(let emailNumber):

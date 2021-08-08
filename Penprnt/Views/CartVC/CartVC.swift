@@ -55,6 +55,9 @@ class CartVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     self.cartView.hideLoader()
                     print(result)
                     self.cartInfo = result.data ?? []
+                    if self.cartInfo.count == 0 {
+                        self.cartView.confirmDesign.isHidden = true
+                    }
                     self.readData(cartInfo: self.cartInfo)
                     self.cartView.cartTableView.reloadData()
                 }
@@ -122,6 +125,9 @@ class CartVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             APIManager.deleteCart(id: pID) {
                 self.cartView.hideLoader()
                 self.cartInfo.remove(at: indexPath.row)
+                if self.cartInfo.count == 0 {
+                    self.cartView.confirmDesign.isHidden = true
+                }
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
         }

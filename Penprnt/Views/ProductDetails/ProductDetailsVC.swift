@@ -209,7 +209,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
                     }
                     else {
                         self.productDetailsView.showLoader()
-                        APIManager.setCart(emailNumber: UserDefaultsManager.shared().Email ?? "", product_id: productID, name: name, price: price, quantity: self.productDetailsView.quantityLabel.text ?? "", Color: colorChoosen, size: size, image: image) {
+                        APIManager.setCart(emailNumber: UserDefaultsManager.shared().Email ?? "", product_id: productID, name: name, price: price, quantity: self.productDetailsView.quantityLabel.text ?? "", Color: colorChoosen, size: size, image: image, note: self.productDetailsView.noteTextView.text ?? "") {
                           
                             
                                 self.productDetailsView.hideLoader()
@@ -225,7 +225,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
                 }
                 else {
                     self.productDetailsView.showLoader()
-                    APIManager.setCart(emailNumber: UserDefaultsManager.shared().Email ?? "", product_id: productID, name: name, price: price, quantity: self.productDetailsView.quantityLabel.text ?? "", Color: colorChoosen, size: size, image: image) {
+                    APIManager.setCart(emailNumber: UserDefaultsManager.shared().Email ?? "", product_id: productID, name: name, price: price, quantity: self.productDetailsView.quantityLabel.text ?? "", Color: colorChoosen, size: size, image: image, note: self.productDetailsView.noteTextView.text ?? "") {
                       
                         
                             self.productDetailsView.hideLoader()
