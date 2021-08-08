@@ -2,3 +2,6 @@
 "mainColor": #00AEEF
 "white": #FFFFFF
 "borderColor": #EFEFF4
+"skyColor": #00AEEF
+"progressColor": #EFA61D
+"completeColor": #00BC41

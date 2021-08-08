@@ -80,7 +80,16 @@ class StoreVC: UIViewController, sendingAddress {
     
     
     @IBAction func orderHistoryPressed(_ sender: Any) {
-        
+        if UserDefaultsManager.shared().Email == nil || UserDefaultsManager.shared().Email == "" {
+            showAlert(title: "Sorry No Account.", massage: "Do You Want To Register?", present: self, titleBtn: "OK") {
+                let signUp = SignUpVC.create()
+                self.present(signUp, animated: true, completion: nil)
+            }
+        }
+        else {
+            let orderHistory = OrderHistoryVC.create()
+            self.present(orderHistory, animated: true, completion: nil)
+        }
     }
     
     @IBAction func cardsPressed(_ sender: Any) {
@@ -147,6 +156,13 @@ extension StoreVC: UITableViewDelegate, UITableViewDataSource {
         let catVC = storyboard.instantiateViewController(withIdentifier: "CategoryVC") as! CategoryVC
         catVC.receiveVendorID = vendorID ?? ""
         self.present(catVC, animated: true, completion: nil)
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let rotateTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
+        cell.layer.transform = rotateTransform
+        UIView.animate(withDuration: 1.0) {
+            cell.layer.transform = CATransform3DIdentity
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 254

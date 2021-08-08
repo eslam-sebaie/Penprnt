@@ -18,7 +18,6 @@ class EditProfileVC: UIViewController {
     }
     class func create() -> EditProfileVC {
         let editProfileVC: EditProfileVC = UIViewController.create(storyboardName: Storyboards.profile, identifier: ViewControllers.editProfileVC)
-        
         return editProfileVC
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +32,6 @@ class EditProfileVC: UIViewController {
                 self.editProfileView.phoneTF.text = result.data[0].phone ?? ""
                 self.editProfileView.birthTF.text = UserDefaultsManager.shared().Password ?? ""
                 self.editProfileView.emailTF.text = UserDefaultsManager.shared().Email ?? ""
-                
             }
         }
     }

@@ -886,7 +886,6 @@
                                     <constraint firstAttribute="width" constant="57" id="iJ7-VK-p3K"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="backPressed:" destination="ipn-vt-3fA" eventType="touchUpInside" id="KJ3-2M-Gfr"/>
                                     <action selector="backPressed:" destination="rru-B3-1jA" eventType="touchUpInside" id="r2c-Qa-7F8"/>
                                 </connections>
                             </button>

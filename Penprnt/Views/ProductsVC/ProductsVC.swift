@@ -77,7 +77,9 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
                 print(err)
             case .success(let result):
                 if result.message != "faild"{
+                    
                     self.productInformation1 = result.data
+                    
                     for i in result.data {
                         self.nameArray1.append(i.products.name ?? "")
                         self.imageArray1.append(i.products.image ?? "")

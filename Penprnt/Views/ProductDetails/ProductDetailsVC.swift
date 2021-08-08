@@ -193,7 +193,12 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
             }
         }
         else {
-            
+            if checkNew {
+                productID = receiveInfo.id
+            }
+            else {
+                productID = receiveInfo1.products.id
+            }
             if colorCheck {
                 if colorChoosen == "" {
                     self.show_Alert("Please!", "Choose Color.")

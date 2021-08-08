@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		1EEABA0EE5D52FA0005350E2 /* Pods_Penprnt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F111EF131C2E1664A17B4B /* Pods_Penprnt.framework */; };
 		24561031066D0F8B6B6C3BC4 /* Pods_Penprnt_PenprntUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9777493C7B878A3417FBE121 /* Pods_Penprnt_PenprntUITests.framework */; };
+		960515CC26C0547100E90449 /* ThankOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960515CB26C0547100E90449 /* ThankOrderVC.swift */; };
+		960515D426C0559000E90449 /* ThankOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960515D326C0559000E90449 /* ThankOrderView.swift */; };
+		960515DE26C073D700E90449 /* OrderHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960515DD26C073D700E90449 /* OrderHistoryVC.swift */; };
+		960515E326C073E900E90449 /* OrderHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960515E226C073E900E90449 /* OrderHistoryView.swift */; };
+		960515E926C0740000E90449 /* OrderHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960515E826C0740000E90449 /* OrderHistoryTableViewCell.swift */; };
+		960515F126C075E800E90449 /* OrderModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960515F026C075E800E90449 /* OrderModal.swift */; };
+		960515F726C07BD500E90449 /* OrderDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960515F626C07BD500E90449 /* OrderDetailsVC.swift */; };
+		960515FF26C07BEC00E90449 /* OrderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960515FE26C07BEC00E90449 /* OrderDetailsView.swift */; };
+		9605160526C07CD000E90449 /* OrderDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9605160426C07CD000E90449 /* OrderDetailsTableViewCell.swift */; };
 		962C6AB72674BD7800F6FA8B /* RateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962C6AB62674BD7800F6FA8B /* RateVC.swift */; };
 		962C6ABF2674BD8500F6FA8B /* RateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962C6ABE2674BD8500F6FA8B /* RateView.swift */; };
 		962C6AC52674BD9A00F6FA8B /* RateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962C6AC42674BD9A00F6FA8B /* RateTableViewCell.swift */; };
@@ -122,6 +131,15 @@
 		3C2487B568D8245863BB914F /* Pods-PenprntTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PenprntTests.debug.xcconfig"; path = "Target Support Files/Pods-PenprntTests/Pods-PenprntTests.debug.xcconfig"; sourceTree = "<group>"; };
 		74FE06611A9585A454CE2FD4 /* Pods-Penprnt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Penprnt.debug.xcconfig"; path = "Target Support Files/Pods-Penprnt/Pods-Penprnt.debug.xcconfig"; sourceTree = "<group>"; };
 		79F111EF131C2E1664A17B4B /* Pods_Penprnt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Penprnt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		960515CB26C0547100E90449 /* ThankOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankOrderVC.swift; sourceTree = "<group>"; };
+		960515D326C0559000E90449 /* ThankOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankOrderView.swift; sourceTree = "<group>"; };
+		960515DD26C073D700E90449 /* OrderHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryVC.swift; sourceTree = "<group>"; };
+		960515E226C073E900E90449 /* OrderHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryView.swift; sourceTree = "<group>"; };
+		960515E826C0740000E90449 /* OrderHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		960515F026C075E800E90449 /* OrderModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModal.swift; sourceTree = "<group>"; };
+		960515F626C07BD500E90449 /* OrderDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsVC.swift; sourceTree = "<group>"; };
+		960515FE26C07BEC00E90449 /* OrderDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsView.swift; sourceTree = "<group>"; };
+		9605160426C07CD000E90449 /* OrderDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		962C6AB62674BD7800F6FA8B /* RateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateVC.swift; sourceTree = "<group>"; };
 		962C6ABE2674BD8500F6FA8B /* RateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateView.swift; sourceTree = "<group>"; };
 		962C6AC42674BD9A00F6FA8B /* RateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTableViewCell.swift; sourceTree = "<group>"; };
@@ -258,6 +276,58 @@
 				B1D066FCE98A44464A3AD66E /* Pods-PenprntTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		960515CA26C053F700E90449 /* ThankOrderVC */ = {
+			isa = PBXGroup;
+			children = (
+				960515CB26C0547100E90449 /* ThankOrderVC.swift */,
+				960515D326C0559000E90449 /* ThankOrderView.swift */,
+			);
+			path = ThankOrderVC;
+			sourceTree = "<group>";
+		};
+		960515D826C056A100E90449 /* CreditCardVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CreditCardVC;
+			sourceTree = "<group>";
+		};
+		960515DC26C073A800E90449 /* OrderHistoryVC */ = {
+			isa = PBXGroup;
+			children = (
+				960515DD26C073D700E90449 /* OrderHistoryVC.swift */,
+				960515E226C073E900E90449 /* OrderHistoryView.swift */,
+				960515E726C073EE00E90449 /* Cells */,
+			);
+			path = OrderHistoryVC;
+			sourceTree = "<group>";
+		};
+		960515E726C073EE00E90449 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				960515E826C0740000E90449 /* OrderHistoryTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		960515F526C07BA700E90449 /* OrderDetailsVC */ = {
+			isa = PBXGroup;
+			children = (
+				960515F626C07BD500E90449 /* OrderDetailsVC.swift */,
+				960515FE26C07BEC00E90449 /* OrderDetailsView.swift */,
+				9605160326C07CA900E90449 /* Cells */,
+			);
+			path = OrderDetailsVC;
+			sourceTree = "<group>";
+		};
+		9605160326C07CA900E90449 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9605160426C07CD000E90449 /* OrderDetailsTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		962C6AB52674BD5E00F6FA8B /* RateVC */ = {
@@ -494,6 +564,7 @@
 				96A33B1C26BD8EA200AA029E /* StoreModal.swift */,
 				96A33B3826BDFC1600AA029E /* RateModel.swift */,
 				968C119426BF20E400878B21 /* FavoriteModel.swift */,
+				960515F026C075E800E90449 /* OrderModal.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -530,6 +601,10 @@
 				962C6AB52674BD5E00F6FA8B /* RateVC */,
 				966DEE0F265AEE1D00B150B3 /* UserProfile */,
 				963883A9265C2C5700317932 /* EditProfile */,
+				960515CA26C053F700E90449 /* ThankOrderVC */,
+				960515DC26C073A800E90449 /* OrderHistoryVC */,
+				960515F526C07BA700E90449 /* OrderDetailsVC */,
+				960515D826C056A100E90449 /* CreditCardVC */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1028,11 +1103,13 @@
 				968C119B26BF22D200878B21 /* FavoriteVC.swift in Sources */,
 				966F697C263F5F460019F136 /* AuthModal.swift in Sources */,
 				9683BD78263AEE3B00676705 /* PhoneVerifyView.swift in Sources */,
+				9605160526C07CD000E90449 /* OrderDetailsTableViewCell.swift in Sources */,
 				963883AB265C2C7800317932 /* EditProfileVC.swift in Sources */,
 				9657F6D2263EE70E00952725 /* ProductsVC.swift in Sources */,
 				962C6ABF2674BD8500F6FA8B /* RateView.swift in Sources */,
 				9683BCD5263AD20C00676705 /* Colors.swift in Sources */,
 				966F6981263F717E0019F136 /* SignUpViewModal.swift in Sources */,
+				960515F726C07BD500E90449 /* OrderDetailsVC.swift in Sources */,
 				96F84894263F3083003F9F83 /* SaleCollectionViewCell.swift in Sources */,
 				968C117F26BF109500878B21 /* CartVC.swift in Sources */,
 				9683BD57263AE70B00676705 /* MapVCView.swift in Sources */,
@@ -1041,6 +1118,7 @@
 				9683BD4F263AE6AE00676705 /* MapVC.swift in Sources */,
 				968C11A026BF22E100878B21 /* FavoriteView.swift in Sources */,
 				968C11A626BF22F400878B21 /* FavoriteTableViewCell.swift in Sources */,
+				960515FF26C07BEC00E90449 /* OrderDetailsView.swift in Sources */,
 				968C118D26BF10BA00878B21 /* CartTableViewCell.swift in Sources */,
 				9683BD30263AD81B00676705 /* WelcomeView.swift in Sources */,
 				963883B9265C3A2800317932 /* SearchVC.swift in Sources */,
@@ -1057,7 +1135,9 @@
 				9683BD15263AD4F000676705 /* Validator.swift in Sources */,
 				9683BCE6263AD28C00676705 /* UIView.swift in Sources */,
 				9683BD70263AEE2B00676705 /* PhoneVerifyVC.swift in Sources */,
+				960515DE26C073D700E90449 /* OrderHistoryVC.swift in Sources */,
 				968C119526BF20E400878B21 /* FavoriteModel.swift in Sources */,
+				960515E326C073E900E90449 /* OrderHistoryView.swift in Sources */,
 				9683BD2B263AD7ED00676705 /* WelcomeVC.swift in Sources */,
 				9654A0C7263B35DE00A01314 /* CategoryVC.swift in Sources */,
 				96A33B3926BDFC1600AA029E /* RateModel.swift in Sources */,
@@ -1080,13 +1160,16 @@
 				966F6986263F77970019F136 /* SignInViewModal.swift in Sources */,
 				9654A0CF263B360000A01314 /* CategoryView.swift in Sources */,
 				9683BD10263AD4CB00676705 /* UserDefaultManager.swift in Sources */,
+				960515E926C0740000E90449 /* OrderHistoryTableViewCell.swift in Sources */,
 				966D51D22678D08E00DDD565 /* FilterCollectionViewCell.swift in Sources */,
 				9683BD49263AE21300676705 /* SignUpView.swift in Sources */,
 				968C118726BF10A600878B21 /* CartView.swift in Sources */,
 				96A33B2B26BDA87300AA029E /* SubCategoryView.swift in Sources */,
 				969E163F268CB4E4007CDC19 /* SizeCollectionViewCell.swift in Sources */,
+				960515F126C075E800E90449 /* OrderModal.swift in Sources */,
 				9683BCDA263AD21400676705 /* Strings.swift in Sources */,
 				96A33B0726BD8C4D00AA029E /* StoreVC.swift in Sources */,
+				960515D426C0559000E90449 /* ThankOrderView.swift in Sources */,
 				9677FC30266172E90058D04A /* productModal.swift in Sources */,
 				9657F6DD263EE72C00952725 /* ProductsView.swift in Sources */,
 				9683BD5C263AE82200676705 /* MapExtension.swift in Sources */,
@@ -1095,6 +1178,7 @@
 				96A33B1526BD8C7700AA029E /* StoreTableViewCell.swift in Sources */,
 				9683BC3C263AC8D500676705 /* AppDelegate.swift in Sources */,
 				96A33B0F26BD8C6200AA029E /* StoreView.swift in Sources */,
+				960515CC26C0547100E90449 /* ThankOrderVC.swift in Sources */,
 				9683BC3E263AC8D500676705 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

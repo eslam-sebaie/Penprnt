@@ -37,7 +37,6 @@ class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     self.favoriteView.favoriteTableView.reloadData()
                 }
             }
-            
         }
     }
     
@@ -47,7 +46,6 @@ class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.favoriteView.favoriteTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavoriteTableViewCell
-
         
         cell.prodImage.sd_setImage(with: URL(string: favInfo[indexPath.row].product.image ?? ""), completed: nil)
         cell.prodImage.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -67,6 +65,19 @@ class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         proDetails.checkNew = true
         self.present(proDetails, animated: true, completion: nil)
     }
+   
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.favoriteView.showLoader()
+            let pID = favInfo[indexPath.row].id
+            APIManager.deleteFavorite(id: pID) {
+                self.favoriteView.hideLoader()
+                self.favInfo.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let rotateTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
@@ -74,7 +85,6 @@ class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         UIView.animate(withDuration: 1.0) {
             cell.layer.transform = CATransform3DIdentity
         }
-        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 205

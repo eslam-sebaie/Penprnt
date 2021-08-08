@@ -31,6 +31,9 @@ struct ViewControllers {
     static let filterVC = "FilterVC"
     static let productDetailsVC = "ProductDetailsVC"
     static let subCategoryVC = "SubCategoryVC"
+    static let thankOrderVC = "ThankOrderVC"
+    static let orderHistoryVC = "OrderHistoryVC"
+    static let orderDetailsVC = "OrderDetailsVC"
 }
 struct URLs {
     // MARK:- base
@@ -52,6 +55,8 @@ struct URLs {
     static let rate = "rate"
     static let favorite = "favorite"
     static let cart = "cart"
+    static let order = "order"
+    static let orderDetails = "orderDetails"
     
 }
 struct ParameterKeys {

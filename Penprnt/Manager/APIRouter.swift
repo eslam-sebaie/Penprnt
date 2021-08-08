@@ -32,13 +32,20 @@ enum APIRouter: URLRequestConvertible {
     case getFavorite(_ emailNumber: String)
     case setCart(_ emailNumber: String, _ product_id: Int, _ name: String, _ price: String, _ quantity: String, _ Color: String, _ size: String, _ image: String)
     case getCart(_ emailNumber: String)
+    case deleteFavorite(_ id: Int)
+    case deleteCart(_ id: Int)
+    case setOrder(_ emailNumber: String, _ orderDate: String, _ totalPrice: String, _ productId: [Int], _ price: [String], _ quantity: [String], _ Color: [String], _ size: [String], _ name: [String], _ image: [String])
+    case getOrder(_ emailNumber: String)
+    case getOrderDetails(_ id: Int)
     // MARK: - HttpMethod
     private var method: HTTPMethod {
         switch self {
-        case .userRegister, .userLogin, .updateAddress, .updateImage, .editProfile, .postRate, .makeFavorite, .setCart:
+        case .userRegister, .userLogin, .updateAddress, .updateImage, .editProfile, .postRate, .makeFavorite, .setCart, .setOrder:
             return .post
-        case .getCategories, .getSubCategories ,.searchProduct, .productsNew, .productsSale, .searchUser, .filterAlph, .filterByPriceColor, .getAllStors, .getRate, .getCart, .getFavorite:
+        case .getCategories, .getSubCategories ,.searchProduct, .productsNew, .productsSale, .searchUser, .filterAlph, .filterByPriceColor, .getAllStors, .getRate, .getCart, .getFavorite, .getOrder, .getOrderDetails:
             return .get
+        case .deleteFavorite, .deleteCart:
+            return .delete
         default:
             return .delete
         }
@@ -90,6 +97,16 @@ enum APIRouter: URLRequestConvertible {
             return [ParameterKeys.email: emailNumber]
         case .getFavorite(let emailNumber):
             return [ParameterKeys.email: emailNumber]
+        case .deleteFavorite(let id):
+            return ["id": id]
+        case .deleteCart(let id):
+            return ["id": id]
+        case .setOrder(let emailNumber, let orderDate, let totalPrice, let productId, let price, let quantity, let Color, let size, let name, let image):
+            return [ParameterKeys.email: emailNumber, "orderDate": orderDate, "totalPrice": totalPrice, "productId": productId, "price": price, "quantity": quantity, "Color": Color, "size": size, "name": name, "image": image]
+        case .getOrder(let emailNumber):
+            return [ParameterKeys.email: emailNumber]
+        case .getOrderDetails(let id):
+            return ["id": id]
         default:
             return nil
         }
@@ -138,6 +155,16 @@ enum APIRouter: URLRequestConvertible {
             return URLs.cart
         case .getCart:
             return URLs.cart
+        case .deleteFavorite:
+            return URLs.favorite
+        case .deleteCart:
+            return URLs.cart
+        case .setOrder:
+            return URLs.order
+        case .getOrder:
+            return URLs.order
+        case .getOrderDetails:
+            return URLs.orderDetails
         }
     }
     

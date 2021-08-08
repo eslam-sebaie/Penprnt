@@ -13,7 +13,8 @@ class tabViewController: UITabBarController {
     super.viewDidLoad()
 //    self.tabBarItem.badgeColor = .red
     let layer = CAShapeLayer()
-    layer.path = UIBezierPath(roundedRect: CGRect(x: 16, y: tabBar.bounds.minY , width: tabBar.bounds.width - 40, height: tabBar.bounds.height + 3), cornerRadius: (tabBar.frame.width/2)).cgPath
+    layer.path = UIBezierPath(roundedRect: CGRect(x: 16, y: tabBar.bounds.minY , width: tabBar.bounds.width - 40, height: tabBar.bounds.height ), cornerRadius: (tabBar.frame.width/2)).cgPath
+    // +3
     layer.shadowColor = UIColor.white.cgColor
     layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
     layer.shadowRadius = 25.0

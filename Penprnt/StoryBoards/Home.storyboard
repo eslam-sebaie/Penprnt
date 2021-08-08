@@ -730,7 +730,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o80-Sd-t5y">
-                                <rect key="frame" x="16" y="131" width="382" height="658"/>
+                                <rect key="frame" x="16" y="131" width="382" height="597"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="105" id="mVG-HU-d3f" customClass="CartTableViewCell" customModule="Penprnt" customModuleProvider="target">
@@ -842,18 +842,35 @@
                                     <outlet property="delegate" destination="fdI-FA-3Ds" id="c7T-5R-IUi"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQZ-tw-Krh">
+                                <rect key="frame" x="32" y="744" width="350" height="45"/>
+                                <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="YQ9-N2-cRC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Confirm Order">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmOrderPressed:" destination="fdI-FA-3Ds" eventType="touchUpInside" id="Af0-d6-cnS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8f6-g0-N8z"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98431372549999996" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="x0Q-Nd-6mt" firstAttribute="top" secondItem="8f6-g0-N8z" secondAttribute="top" constant="11" id="2Oy-B6-pNN"/>
+                            <constraint firstItem="8f6-g0-N8z" firstAttribute="bottom" secondItem="zQZ-tw-Krh" secondAttribute="bottom" constant="24" id="6E8-5d-Chu"/>
                             <constraint firstItem="1TZ-bI-n6u" firstAttribute="top" secondItem="8f6-g0-N8z" secondAttribute="top" constant="24" id="6Et-eh-3Ez"/>
                             <constraint firstItem="o80-Sd-t5y" firstAttribute="top" secondItem="1TZ-bI-n6u" secondAttribute="bottom" constant="24" id="AzA-4P-fdZ"/>
+                            <constraint firstItem="zQZ-tw-Krh" firstAttribute="top" secondItem="o80-Sd-t5y" secondAttribute="bottom" constant="16" id="GYW-zR-nAG"/>
                             <constraint firstItem="qkh-Mp-Brl" firstAttribute="centerY" secondItem="2hN-Gy-Xy8" secondAttribute="centerY" id="IhG-pv-qkk"/>
                             <constraint firstItem="2hN-Gy-Xy8" firstAttribute="top" secondItem="8f6-g0-N8z" secondAttribute="top" constant="24" id="ObX-Ca-VTZ"/>
+                            <constraint firstItem="8f6-g0-N8z" firstAttribute="trailing" secondItem="zQZ-tw-Krh" secondAttribute="trailing" constant="32" id="OqB-qW-XWJ"/>
                             <constraint firstItem="o80-Sd-t5y" firstAttribute="leading" secondItem="8f6-g0-N8z" secondAttribute="leading" constant="16" id="PVf-qm-Ngg"/>
                             <constraint firstItem="x0Q-Nd-6mt" firstAttribute="centerY" secondItem="2hN-Gy-Xy8" secondAttribute="centerY" id="PtP-gM-fGR"/>
-                            <constraint firstItem="8f6-g0-N8z" firstAttribute="bottom" secondItem="o80-Sd-t5y" secondAttribute="bottom" constant="24" id="WUN-CL-prJ"/>
+                            <constraint firstItem="zQZ-tw-Krh" firstAttribute="leading" secondItem="8f6-g0-N8z" secondAttribute="leading" constant="32" id="QKF-8W-agA"/>
                             <constraint firstItem="x0Q-Nd-6mt" firstAttribute="leading" secondItem="8f6-g0-N8z" secondAttribute="leading" constant="16" id="bQf-U7-HaZ"/>
                             <constraint firstItem="8f6-g0-N8z" firstAttribute="trailing" secondItem="1TZ-bI-n6u" secondAttribute="trailing" constant="24" id="gNJ-57-GEX"/>
                             <constraint firstItem="8f6-g0-N8z" firstAttribute="trailing" secondItem="o80-Sd-t5y" secondAttribute="trailing" constant="16" id="gzU-L3-GqN"/>
@@ -862,6 +879,7 @@
                         </constraints>
                         <connections>
                             <outlet property="cartTableView" destination="o80-Sd-t5y" id="p1z-Zu-oL0"/>
+                            <outlet property="confirmDesign" destination="zQZ-tw-Krh" id="iTc-fE-K4W"/>
                         </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="cart" selectedImage="selectCart" id="CaT-eb-RMi"/>
@@ -871,7 +889,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEO-an-oHr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4071" y="5"/>
+            <point key="canvasLocation" x="4069.5652173913045" y="4.6875"/>
         </scene>
         <!--StoreVC-->
         <scene sceneID="BWF-lo-ywJ">

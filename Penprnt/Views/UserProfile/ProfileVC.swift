@@ -56,6 +56,16 @@ class ProfileVC: UIViewController, sendingAddress {
     }
     
     @IBAction func orderHistoryPressed(_ sender: Any) {
+        if UserDefaultsManager.shared().Email == nil || UserDefaultsManager.shared().Email == "" {
+            showAlert(title: "Sorry No Account.", massage: "Do You Want To Register?", present: self, titleBtn: "OK") {
+                let signUp = SignUpVC.create()
+                self.present(signUp, animated: true, completion: nil)
+            }
+        }
+        else {
+            let orderHistory = OrderHistoryVC.create()
+            self.present(orderHistory, animated: true, completion: nil)
+        }
     }
     
     @IBAction func locationPressed(_ sender: Any) {

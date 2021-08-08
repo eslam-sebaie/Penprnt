@@ -10,6 +10,7 @@ import UIKit
 class CartView: UIView {
 
     @IBOutlet weak var cartTableView: UITableView!
+    @IBOutlet weak var confirmDesign: UIButton!
     
-
+    
 }
