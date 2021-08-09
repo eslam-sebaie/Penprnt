@@ -210,12 +210,14 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
             let proDetails = ProductDetailsVC.create()
             proDetails.receiveInfo = productInformation[indexPath.row]
             proDetails.checkNew = true
+            proDetails.receiveVendorID = receiveVendorID
             self.present(proDetails, animated: true, completion: nil)
         }
         else {
             let proDetails = ProductDetailsVC.create()
             proDetails.receiveInfo1 = productInformation1[indexPath.row]
             proDetails.checkNew = false
+            proDetails.receiveVendorID = receiveVendorID
             self.present(proDetails, animated: true, completion: nil)
         }
         

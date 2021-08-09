@@ -14,7 +14,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
     var receiveInfo = productInfo(id: 0, image: "", name: "", datumDescription: "", itemNo: "", brandName: "", price: "", wholeSale: "", quantity: "", size: [], barCode: "", date: "", design: "", productColor: [], totalRate: "", totalCountUser: "", isActive: false, vendorID: "", categoryID: "", subcategoryId: "", createdAt: "", updatedAt: "")
     
     var receiveInfo1 = MostProductInfo(productID: "", id: 0, products: Products(id: 0, image: "", name: "", productsDescription: "", itemNo: "", brandName: "", price: "", wholeSale: "", quantity: "", size: [], barCode: "", date: "", design: "", productColor: [], totalRate: "", totalCountUser: "", isActive: false, vendorID: "", categoryID: "", subcategoryId: "", createdAt: "", updatedAt: ""))
-    
+    var cartInfo = [CartInfo]()
     var checkNew = false
     var productID = 0
     var totalRate = ""
@@ -31,6 +31,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
     var quantity = ""
     var size = ""
     var image = ""
+    var receiveVendorID = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,6 +82,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
             }
         }
         getFavorite()
+        getCart()
         productDetailsView.noteTextView.delegate = self
         
     }
@@ -183,7 +185,31 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
     @IBAction func stepperChanges(_ sender: UIStepper) {
         productDetailsView.quantityLabel.text = "\(sender.value)"
     }
-    
+    func getCart(){
+        self.productDetailsView.showLoader()
+        APIManager.getCart(emailNumber: UserDefaultsManager.shared().Email ?? "") { (response) in
+            switch response {
+            case .failure(let err):
+                print(err)
+                self.productDetailsView.hideLoader()
+            case .success(let result):
+                self.productDetailsView.hideLoader()
+                print(result)
+                self.cartInfo = result.data ?? []
+                
+            }
+        }
+    }
+    func deleteCarts(cartInfo: [CartInfo]) {
+        self.productDetailsView.showLoader()
+        UserDefaultsManager.shared().vendorID = 0
+        for i in cartInfo {
+            APIManager.deleteCart(id: i.id ?? 0) {
+                self.productDetailsView.hideLoader()
+            }
+        }
+        self.cartInfo = []
+    }
     
     @IBAction func cartPressed(_ sender: Any) {
         if UserDefaultsManager.shared().Email == nil || UserDefaultsManager.shared().Email == "" {
@@ -208,13 +234,28 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
                         self.show_Alert("Please!", "Enter Quantity.")
                     }
                     else {
-                        self.productDetailsView.showLoader()
-                        APIManager.setCart(emailNumber: UserDefaultsManager.shared().Email ?? "", product_id: productID, name: name, price: price, quantity: self.productDetailsView.quantityLabel.text ?? "", Color: colorChoosen, size: size, image: image, note: self.productDetailsView.noteTextView.text ?? "") {
-                          
-                            
-                                self.productDetailsView.hideLoader()
-                                self.dismiss(animated: true, completion: nil)
-                            
+                        if self.cartInfo.count == 0 {
+                            self.productDetailsView.showLoader()
+                            APIManager.setCart(emailNumber: UserDefaultsManager.shared().Email ?? "", product_id: productID, name: name, price: price, quantity: self.productDetailsView.quantityLabel.text ?? "", Color: colorChoosen, size: size, image: image, note: self.productDetailsView.noteTextView.text ?? "") {
+                              
+                                UserDefaultsManager.shared().vendorID = self.receiveVendorID
+                                    self.productDetailsView.hideLoader()
+                                    self.dismiss(animated: true, completion: nil)
+                                
+                            }
+                        }
+                        else if self.cartInfo.count != 0 && receiveVendorID == UserDefaultsManager.shared().vendorID {
+                            self.productDetailsView.showLoader()
+                            APIManager.setCart(emailNumber: UserDefaultsManager.shared().Email ?? "", product_id: productID, name: name, price: price, quantity: self.productDetailsView.quantityLabel.text ?? "", Color: colorChoosen, size: size, image: image, note: self.productDetailsView.noteTextView.text ?? "") {
+                                UserDefaultsManager.shared().vendorID = self.receiveVendorID
+                                    self.productDetailsView.hideLoader()
+                                    self.dismiss(animated: true, completion: nil)
+                            }
+                        }
+                        else if self.cartInfo.count != 0 && receiveVendorID != UserDefaultsManager.shared().vendorID {
+                            showAlert(title: "Sorry.", massage: "Do You Want To Delete your Cart First?", present: self, titleBtn: "OK") {
+                                self.deleteCarts(cartInfo: self.cartInfo)
+                            }
                         }
                     }
                 }

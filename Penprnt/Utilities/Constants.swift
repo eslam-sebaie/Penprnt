@@ -74,6 +74,7 @@ struct UserDefaultsKeys {
     static let email = "email"
     static let phone = "phone"
     static let password = "password"
+    static let vendorID = "vendorID"
 }
 struct TableCells {
    

@@ -699,7 +699,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profleBack" translatesAutoresizingMaskIntoConstraints="NO" id="2hN-Gy-Xy8">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2hN-Gy-Xy8">
                                 <rect key="frame" x="24" y="68" width="10" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="10" id="QOF-w0-UZn"/>
@@ -743,7 +743,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zaL-NY-C47">
                                                     <rect key="frame" x="10" y="8" width="362" height="89"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yjk-nw-qSL">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yjk-nw-qSL">
                                                             <rect key="frame" x="13" y="9.5" width="78" height="70"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="70" id="WTX-UE-L0d"/>
@@ -1551,7 +1551,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profleBack" translatesAutoresizingMaskIntoConstraints="NO" id="b0x-JG-FIi">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b0x-JG-FIi">
                                 <rect key="frame" x="24" y="68" width="10" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="10" id="ILm-n2-oBh"/>
@@ -1973,7 +1973,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PhT-gB-Hbt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2403" y="5"/>
+            <point key="canvasLocation" x="2638" y="5"/>
         </scene>
         <!--Sub CategoryVC-->
         <scene sceneID="gax-yi-VKe">

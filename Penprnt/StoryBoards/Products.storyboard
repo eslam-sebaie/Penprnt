@@ -727,7 +727,7 @@
                                                     <constraint firstAttribute="width" constant="30" id="3ES-Ow-qu5"/>
                                                     <constraint firstAttribute="height" constant="30" id="CXC-aW-pxw"/>
                                                 </constraints>
-                                                <state key="normal" image="unlove"/>
+                                                <state key="normal" image="menufavourite"/>
                                                 <connections>
                                                     <action selector="favoritePressed:" destination="41Q-rJ-LrO" eventType="touchUpInside" id="ZzE-NX-KqK"/>
                                                 </connections>
@@ -1431,9 +1431,9 @@
         <image name="catimage" width="165" height="165"/>
         <image name="editProfile" width="172" height="196"/>
         <image name="heart" width="96" height="96"/>
+        <image name="menufavourite" width="20.5" height="19.5"/>
         <image name="profleBack" width="9" height="19"/>
         <image name="rate" width="20" height="20"/>
-        <image name="unlove" width="96" height="96"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

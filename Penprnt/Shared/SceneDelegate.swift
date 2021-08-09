@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 let storyboard = UIStoryboard(name: "Home", bundle: nil)
 
                 let initialViewController = storyboard.instantiateViewController(withIdentifier: "tabViewController")
-
+                UserDefaultsManager.shared().vendorID = 0
                    window.rootViewController = initialViewController
                    self.window = window
                    window.makeKeyAndVisible()
@@ -34,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
                 let initialViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeVC")
-
+                UserDefaultsManager.shared().vendorID = 0
                    window.rootViewController = initialViewController
                    self.window = window
                    window.makeKeyAndVisible()

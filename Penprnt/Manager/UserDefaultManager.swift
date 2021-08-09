@@ -63,5 +63,16 @@ class UserDefaultsManager {
             return UserDefaults.standard.string(forKey: UserDefaultsKeys.phone)
         }
     }
+    var vendorID: Int? {
+        set {
+            UserDefaults.standard.set(newValue, forKey: UserDefaultsKeys.vendorID)
+        }
+        get {
+            guard UserDefaults.standard.object(forKey: UserDefaultsKeys.vendorID) != nil else {
+                return nil
+            }
+            return UserDefaults.standard.integer(forKey: UserDefaultsKeys.vendorID)
+        }
+    }
     
 }
