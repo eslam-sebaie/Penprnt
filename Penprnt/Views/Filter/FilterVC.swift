@@ -13,11 +13,13 @@ class FilterVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     @IBOutlet var filterView: FilterView!
     var subCatID = 0
     var catName = ""
-    var colorArray = [0x0000FF, 0xFF0000, 0xFFFF00, 0xFF6600, 0x00FF00, 0x6600FF, 0x000000, 0xFFFFFF]
-    var colorArrayStr = ["#0000FF", "#FF0000", "#FFFF00", "#FF6600", "#00FF00", "#6600FF", "#000000", "#FFFFFF"]
+    var colorArray = [0xFFFFFF, 0xC0C0C0,0x808080,0x000000,0xFF0000,0x800000, 0xFFFF00,0x808000, 0x00FF00,0x008000, 0x00FFFF,0x0000FF, 0x000080, 0xFF00FF, 0x800080, 0xA52A2A,0xADD8E6,0xFFC0CB, 0xFFD700]
+    
+    var colorArrayStr = ["#FFFFFF", "#C0C0C0","#808080","#000000","#FF0000","#800000", "#FFFF00","#808000", "#00FF00","#008000", "#00FFFF","#0000FF", "#000080", "#FF00FF", "#800080", "#A52A2A","#ADD8E6","#FFC0CB", "#FFD700"]
     var colorChoosen = ""
     var price = ""
-    
+   
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         filterCollectionViewSpacing()
