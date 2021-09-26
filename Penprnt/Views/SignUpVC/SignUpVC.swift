@@ -32,8 +32,6 @@ class SignUpVC: UIViewController, sendingAddress, UIPickerViewDataSource, UIPick
         signUpView.genderPickerView.dataSource = self
         updateCountryCode()
         signUpView.updateUI()
-    }
-    override func viewWillAppear(_ animated: Bool) {
         APIManager.uploadPhoto(image: UIImage(named: "editProfile")!) { (err, img) in
             self.userImage = img?.data ?? ""
         }
