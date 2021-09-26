@@ -23,14 +23,18 @@ class WelcomeVC: UIViewController {
     }
     
     @IBAction func phonePressed(_ sender: Any) {
-        let phoneVC = LoginPhoneVC.create()
-        self.present(phoneVC, animated: true, completion: nil)
+        let signIn = SignInVC.create()
+        self.present(signIn, animated: true, completion: nil)
+//        let phoneVC = LoginPhoneVC.create()
+//        self.present(phoneVC, animated: true, completion: nil)
     }
     
     @IBAction func skipPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: Storyboards.home, bundle: nil)
         let tabVC = storyboard.instantiateViewController(withIdentifier: "tabViewController")
         self.present(tabVC, animated: true, completion: nil)
+        
+
     }
     
     @IBAction func signInPressed(_ sender: Any) {
@@ -39,8 +43,18 @@ class WelcomeVC: UIViewController {
 //        self.present(graveViewController, animated: true, completion: nil)
         
         
-        let signIn = SignInVC.create()
-        self.present(signIn, animated: true, completion: nil)
+//        let signIn = SignInVC.create()
+//        self.present(signIn, animated: true, completion: nil)
+        
+        
+        // forget password
     }
+    
+
+    @IBAction func googlePressed(_ sender: Any) {
+                let signUp = SignUpVC.create()
+                self.present(signUp, animated: true, completion: nil)
+    }
+    
     
 }

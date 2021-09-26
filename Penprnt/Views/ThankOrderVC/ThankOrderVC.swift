@@ -19,6 +19,14 @@ class ThankOrderVC: UIViewController {
         let thankOrderVC: ThankOrderVC = UIViewController.create(storyboardName: Storyboards.order, identifier: ViewControllers.thankOrderVC)
         return thankOrderVC
     }
+    
+    @IBAction func backPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: Storyboards.home, bundle: nil)
+        let tabVC = storyboard.instantiateViewController(withIdentifier: "tabViewController")
+        self.present(tabVC, animated: true, completion: nil)
+        
+    }
+    
     @IBAction func orderPressed(_ sender: Any) {
         let orderHistory = OrderHistoryVC.create()
         self.present(orderHistory, animated: true, completion: nil)

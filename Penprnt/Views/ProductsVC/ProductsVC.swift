@@ -46,6 +46,12 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
         productsView.categoryNameLabel.text = receiveCatName
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        productsView.sortView.backgroundColor = ColorName.mainColor.color
+        productsView.filterView.backgroundColor = ColorName.mainColor.color
+        productsView.filterLabel.textColor = .white
+        productsView.sortLabel.textColor = .white
+    }
     
     func getNewProduct() {
         self.productsView.showLoader()
@@ -53,8 +59,10 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
             switch response {
             case .failure(let err):
                 print(err)
+                self.show_Alert("Sorry", "SomeThing Went Wrong")
+                self.productsView.hideLoader()
             case .success(let result):
-                if result.message != "faild"{
+                if result.message != "faild" && result.data.count > 0 {
                     self.productInformation = result.data
                     for i in result.data {
                         self.nameArray.append(i.name ?? "")
@@ -66,6 +74,10 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
                     self.productsView.hideLoader()
                     self.productsView.newProductCollectionView.reloadData()
                 }
+                else {
+                    
+                    self.productsView.hideLoader()
+                }
             }
         }
     }
@@ -75,8 +87,10 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
             switch response {
             case .failure(let err):
                 print(err)
+                self.show_Alert("Sorry", "SomeThing Went Wrong")
+                self.productsView.hideLoader()
             case .success(let result):
-                if result.message != "faild"{
+                if result.message != "faild" && result.data.count > 0 {
                     
                     self.productInformation1 = result.data
                     
@@ -90,6 +104,10 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
                     self.productsView.hideLoader()
                     self.productsView.productCollectionView.reloadData()
                 }
+                else {
+                    self.productsView.hideLoader()
+                }
+                
             }
         }
     }

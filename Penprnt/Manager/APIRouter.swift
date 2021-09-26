@@ -12,7 +12,7 @@ enum APIRouter: URLRequestConvertible {
     
     // The endpoint name
     // MARK:- Registration
-    case userRegister(_ name: String,_ emailNumber: String, _ address: String,_ dateOfBirth: String, _ gender: String, _ phoneNumber: String ,_ password: String, _ lat: String, _ lng: String, _ points: String)
+    case userRegister(_ name: String,_ emailNumber: String, _ address: String,_ dateOfBirth: String, _ gender: String, _ phoneNumber: String ,_ password: String, _ lat: String, _ lng: String, _ points: String, _ image: String)
     case userLogin(_ emailNumber: String,_ password: String)
     case getCategories(_ vendorId: String)
     case getSubCategories(_ categoryId: String)
@@ -56,8 +56,8 @@ enum APIRouter: URLRequestConvertible {
     private var parameters: Parameters? {
         switch self {
         // MARK: - registerParameters
-        case .userRegister(let name, let emailNumber, let address, let dateOfBirth , let gender, let phoneNumber ,let password, let lat, let lng, let points):
-            return [ParameterKeys.name: name, ParameterKeys.email: emailNumber, ParameterKeys.address: address, ParameterKeys.dateOfBirth: dateOfBirth, ParameterKeys.gender: gender,ParameterKeys.phone: phoneNumber, ParameterKeys.password: password, "lat": lat, "lng": lng, "points": points]
+        case .userRegister(let name, let emailNumber, let address, let dateOfBirth , let gender, let phoneNumber ,let password, let lat, let lng, let points, let image):
+            return [ParameterKeys.name: name, ParameterKeys.email: emailNumber, ParameterKeys.address: address, ParameterKeys.dateOfBirth: dateOfBirth, ParameterKeys.gender: gender,ParameterKeys.phone: phoneNumber, ParameterKeys.password: password, "lat": lat, "lng": lng, "points": points, "image": image]
         case .userLogin(let emailNumber, let password):
             return [ParameterKeys.email: emailNumber, ParameterKeys.password: password]
         

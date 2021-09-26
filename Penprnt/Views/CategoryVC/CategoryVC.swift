@@ -67,15 +67,23 @@ class CategoryVC: UIViewController, UICollectionViewDataSource, UICollectionView
             switch response {
             case .failure(let err):
                 print(err)
+                self.show_Alert("Sorry", "SomeThing Went Wrong")
             case .success(let result):
-                for i in result.data ?? [] {
-                    self.idArray.append(i.id ?? 0)
-                    self.nameArray.append(i.name ?? "")
-                    self.catImage.append(i.image ?? "")
-                    self.detailsArray.append(i.details ?? "")
+                if result.message == "faild" {
+                    self.show_Alert("Sorry", "No Category Found.")
+                }
+                else {
+                    for i in result.data ?? [] {
+                        self.idArray.append(i.id ?? 0)
+                        self.nameArray.append(i.name ?? "")
+                        self.catImage.append(i.image ?? "")
+                        self.detailsArray.append(i.details ?? "")
+                    }
+                    self.categoryView.hideLoader()
+                    self.categoryView.catCollectionView.reloadData()
                 }
                 self.categoryView.hideLoader()
-                self.categoryView.catCollectionView.reloadData()
+              
             }
         }
     }

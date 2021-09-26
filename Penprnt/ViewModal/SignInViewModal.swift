@@ -33,7 +33,7 @@ extension SignInViewModel: SignInViewModelProtocol {
             return
         }
         
-        let response = Validation.shared.validate(values: (type: Validation.ValidationType.password,password))
+        let response = Validation.shared.validate(values: (type: Validation.ValidationType.email, email))
         
         switch response {
         case .failure(_, let message):

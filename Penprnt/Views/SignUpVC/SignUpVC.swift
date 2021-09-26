@@ -24,6 +24,7 @@ class SignUpVC: UIViewController, sendingAddress, UIPickerViewDataSource, UIPick
     private var signUpViewModel: SignUpViewModelProtocol!
     var lat = 0.0
     var lng = 0.0
+    var userImage = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         signUpView.genderPickerView.delegate = self
@@ -31,6 +32,11 @@ class SignUpVC: UIViewController, sendingAddress, UIPickerViewDataSource, UIPick
         signUpView.genderPickerView.dataSource = self
         updateCountryCode()
         signUpView.updateUI()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        APIManager.uploadPhoto(image: UIImage(named: "editProfile")!) { (err, img) in
+            self.userImage = img?.data ?? ""
+        }
     }
     
     class func create() -> SignUpVC {
@@ -92,7 +98,7 @@ class SignUpVC: UIViewController, sendingAddress, UIPickerViewDataSource, UIPick
                 
                 self.lat = Double(latitude!)
                 self.lng = Double(longitude!)
-                let response = Validation.shared.validate(values: (type: Validation.ValidationType.email, email),(Validation.ValidationType.phoneNo,phone),(Validation.ValidationType.password,password))
+                let response = Validation.shared.validate(values: (type: Validation.ValidationType.email, email),(Validation.ValidationType.phoneNo,phone))
                 
                 switch response {
                 case .failure(_, let message):
@@ -117,7 +123,7 @@ class SignUpVC: UIViewController, sendingAddress, UIPickerViewDataSource, UIPick
                 }
                 else {
                     print("Auth success" + (authData?.user.phoneNumber)!)
-                    self.signUpViewModel.SignUp(name: self.signUpView.nameTF.text, emailNumber: self.signUpView.emailTF.text, address: self.signUpView.deliveryAddress.text, dateOfBirth: self.signUpView.dateTimeStamp, gender: self.signUpView.genderTF.text, phoneNumber: (authData?.user.phoneNumber)!,password: self.signUpView.passwordTF.text, lat: String(self.lat), lng: String(self.lng), points: "10")
+                    self.signUpViewModel.SignUp(name: self.signUpView.nameTF.text, emailNumber: self.signUpView.emailTF.text, address: self.signUpView.deliveryAddress.text, dateOfBirth: self.signUpView.dateTimeStamp, gender: self.signUpView.genderTF.text, phoneNumber: (authData?.user.phoneNumber)!,password: self.signUpView.passwordTF.text, lat: String(self.lat), lng: String(self.lng), points: "10", image: self.userImage)
                 }
             }
         }
@@ -139,6 +145,8 @@ class SignUpVC: UIViewController, sendingAddress, UIPickerViewDataSource, UIPick
             if error == nil{
                 self.signUpView.verification_id = verificationID
                 if self.signUpView.verification_id != nil {
+                    self.signUpView.myScrollView.scrollToTop()
+                    self.signUpView.signUpView.dropShadow(radius: 1, shadow: 0)
                     self.hideLoader()
                     self.signUpView.mainOTPView.isHidden = false
                 }
@@ -214,4 +222,10 @@ extension SignUpVC: SignUpProtocol{
         self.present(tabVC, animated: true, completion: nil)
     }
     
+}
+extension UIScrollView {
+    func scrollToTop() {
+        let desiredOffset = CGPoint(x: 0, y: -contentInset.top)
+        setContentOffset(desiredOffset, animated: true)
+   }
 }

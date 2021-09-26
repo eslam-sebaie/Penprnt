@@ -8,7 +8,7 @@
 import UIKit
 
 class SubCategoryVC: UIViewController , UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
-
+    
     @IBOutlet var subCatCollectionView: SubCategoryView!
     var receiveCatID = ""
     var receiveVendorID = ""
@@ -22,7 +22,7 @@ class SubCategoryVC: UIViewController , UICollectionViewDataSource, UICollection
         getSubCats()
     }
     
-
+    
     class func create() -> SubCategoryVC {
         let searchVC: SubCategoryVC = UIViewController.create(storyboardName: Storyboards.home, identifier: ViewControllers.subCategoryVC)
         return searchVC
@@ -35,14 +35,21 @@ class SubCategoryVC: UIViewController , UICollectionViewDataSource, UICollection
             switch response {
             case .failure(let err):
                 print(err)
+                self.show_Alert("Sorry", "SomeThing Went Wrong")
             case .success(let result):
+                if result.message == "faild" {
+                    self.show_Alert("Sorry", "No SubCategory Found.")
+                }
+                else {
+                    
+                    self.subCat = result.data ?? []
+                    self.subCatCollectionView.subCatCollectionView.reloadData()
+                }
                 self.subCatCollectionView.hideLoader()
-                self.subCat = result.data ?? []
-                self.subCatCollectionView.subCatCollectionView.reloadData()
             }
         }
     }
-
+    
     @IBAction func backPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -56,7 +63,7 @@ class SubCategoryVC: UIViewController , UICollectionViewDataSource, UICollection
         cell.subCatName.text = subCat[indexPath.row].name
         cell.subCatDetails.text = subCat[indexPath.row].details
         cell.subCatImage.sd_setImage(with: URL(string: subCat[indexPath.row].image ?? ""), completed: nil)
-
+        
         cell.subCatImage.layer.cornerRadius = 8
         cell.subCatImage.layer.masksToBounds = true
         cell.contentView.layer.cornerRadius = 8
@@ -65,7 +72,7 @@ class SubCategoryVC: UIViewController , UICollectionViewDataSource, UICollection
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        
         print("@@##@#@")
         print(Int(receiveVendorID)!)
         print(Int(receiveCatID)!)
@@ -83,7 +90,7 @@ class SubCategoryVC: UIViewController , UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let yourWidth = 0.4 * self.view.frame.size.width
         let yourHeight = CGFloat(223)
-
+        
         return CGSize(width: yourWidth, height: yourHeight)
     }
     

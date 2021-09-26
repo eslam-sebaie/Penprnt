@@ -36,7 +36,13 @@ class ProfileVC: UIViewController, sendingAddress {
             case .success(let result):
                 print(result)
                 self.profileView.pointsLabel.text = result.data[0].points ?? ""
-                self.profileView.userImage.sd_setImage(with: URL(string: result.data[0].image ?? ""), completed: nil)
+                if let img = result.data[0].image, img != "" {
+                    self.profileView.userImage.sd_setImage(with: URL(string: img), completed: nil)
+                }
+                else {
+                    self.profileView.userImage.image = UIImage(named: "profile1")
+                }
+                
                 self.profileView.userName.text = result.data[0].name
             }
         }

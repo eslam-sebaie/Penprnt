@@ -8,8 +8,8 @@
 import Alamofire
 import SwiftyJSON
 class APIManager {
-    class func userRegister(name: String, emailNumber: String, address: String, dateOfBirth: String, gender: String, phoneNumber: String ,password: String, lat: String, lng: String, points: String,completion: @escaping(Result<SignUpResponse, Error>) -> Void) {
-        request(APIRouter.userRegister(name, emailNumber, address, dateOfBirth, gender, phoneNumber ,password, lat, lng, points)) { (response) in
+    class func userRegister(name: String, emailNumber: String, address: String, dateOfBirth: String, gender: String, phoneNumber: String ,password: String, lat: String, lng: String, points: String,image: String,completion: @escaping(Result<SignUpResponse, Error>) -> Void) {
+        request(APIRouter.userRegister(name, emailNumber, address, dateOfBirth, gender, phoneNumber ,password, lat, lng, points, image)) { (response) in
             completion(response)
         }
     }

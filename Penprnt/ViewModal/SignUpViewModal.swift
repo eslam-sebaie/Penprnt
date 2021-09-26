@@ -7,7 +7,7 @@
 
 import Foundation
 protocol SignUpViewModelProtocol {
-    func SignUp(name: String?, emailNumber: String?, address: String?, dateOfBirth: String?, gender: String?, phoneNumber: String ,password: String?, lat: String, lng: String, points: String?)
+    func SignUp(name: String?, emailNumber: String?, address: String?, dateOfBirth: String?, gender: String?, phoneNumber: String ,password: String?, lat: String, lng: String, points: String?, image: String?)
     
 }
 class SignUpViewModel{
@@ -22,10 +22,10 @@ class SignUpViewModel{
     
 }
 extension SignUpViewModel: SignUpViewModelProtocol {
-    func SignUp(name: String?, emailNumber: String?, address: String?, dateOfBirth: String?, gender: String?, phoneNumber: String ,password: String?, lat: String, lng: String, points: String?) {
+    func SignUp(name: String?, emailNumber: String?, address: String?, dateOfBirth: String?, gender: String?, phoneNumber: String ,password: String?, lat: String, lng: String, points: String?, image: String?) {
         
         self.view.showLoader()
-        APIManager.userRegister(name: name ?? "", emailNumber: emailNumber!, address: address ?? "", dateOfBirth: dateOfBirth ?? "", gender: gender ?? "", phoneNumber: phoneNumber ,password: password!, lat: lat, lng: lng, points: points ?? "") { (response) in
+        APIManager.userRegister(name: name ?? "", emailNumber: emailNumber!, address: address ?? "", dateOfBirth: dateOfBirth ?? "", gender: gender ?? "", phoneNumber: phoneNumber ,password: password!, lat: lat, lng: lng, points: points ?? "", image: image ?? "") { (response) in
                 switch response {
                 case .failure(let err):
                     print(err)

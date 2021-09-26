@@ -58,6 +58,9 @@ class CartVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     if self.cartInfo.count == 0 {
                         self.cartView.confirmDesign.isHidden = true
                     }
+                    else {
+                        self.cartView.confirmDesign.isHidden = false
+                    }
                     self.readData(cartInfo: self.cartInfo)
                     self.cartView.cartTableView.reloadData()
                 }

@@ -24,7 +24,7 @@ extension WelcomeViewModel: WelcomeViewModelProtocol {
     func SignUp(email: String) {
         print(email)
         self.view.showLoader()
-        APIManager.userRegister(name: "", emailNumber: email, address: "", dateOfBirth: "", gender: "", phoneNumber: "" ,password: "", lat: "", lng: "", points: "") { (response) in
+        APIManager.userRegister(name: "", emailNumber: email, address: "", dateOfBirth: "", gender: "", phoneNumber: "" ,password: "", lat: "", lng: "", points: "", image: "") { (response) in
             switch response {
             case .failure(let err):
                 print(err)

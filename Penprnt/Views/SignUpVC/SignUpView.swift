@@ -9,6 +9,8 @@ import UIKit
 import SGCodeTextField
 class SignUpView: UIView {
 
+    
+    @IBOutlet weak var myScrollView: UIScrollView!
     @IBOutlet weak var signUpView: UIView!
     @IBOutlet weak var upperSignUpView: UIView!
     @IBOutlet weak var signUpImage: UIImageView!
@@ -41,12 +43,12 @@ class SignUpView: UIView {
     var verification_id: String? = nil
     func updateUI(){
         mainOTPView.isHidden = true
-        otpView.dropShadow(radius: 16, shadow: 2)
+//        otpView.dropShadow(radius: 16, shadow: 2)
         verifyDesign.setCornerRadius(radius: 8)
         signUpImage.image = Asset.signInBackGround.image
         signUpLabel.text = L10n.signUpLabel
         
-        signUpView.dropShadow(scale: true, radius: 8, shadow: 4)
+        signUpView.dropShadow(radius: 8, shadow: 2)
         upperSignUpView.setCornerRadius(radius: 8)
         upperSignUpView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         signUpDesign.setCornerRadius(radius: 8)
