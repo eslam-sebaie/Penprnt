@@ -33,8 +33,13 @@ class FavoriteVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     print(err)
                     self.show_Alert("Sorry!", "SomeThing Went Wrong.")
                 case .success(let result):
-                    self.favInfo = result.data ?? []
-                    self.favoriteView.favoriteTableView.reloadData()
+                    if result.message == "faild"{
+                        self.show_Alert("Sorry", "No Items in Favorite.")
+                    }
+                    else {
+                        self.favInfo = result.data ?? []
+                        self.favoriteView.favoriteTableView.reloadData()
+                    }
                 }
             }
         }

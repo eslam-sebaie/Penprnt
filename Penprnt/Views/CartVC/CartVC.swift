@@ -53,16 +53,21 @@ class CartVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     self.cartView.hideLoader()
                 case .success(let result):
                     self.cartView.hideLoader()
-                    print(result)
-                    self.cartInfo = result.data ?? []
-                    if self.cartInfo.count == 0 {
+                    if result.message == "faild"{
                         self.cartView.confirmDesign.isHidden = true
+                        self.show_Alert("Sorry", "No Items in Cart.")
                     }
                     else {
-                        self.cartView.confirmDesign.isHidden = false
+                        self.cartInfo = result.data ?? []
+                        if self.cartInfo.count == 0 {
+                            self.cartView.confirmDesign.isHidden = true
+                        }
+                        else {
+                            self.cartView.confirmDesign.isHidden = false
+                        }
+                        self.readData(cartInfo: self.cartInfo)
+                        self.cartView.cartTableView.reloadData()
                     }
-                    self.readData(cartInfo: self.cartInfo)
-                    self.cartView.cartTableView.reloadData()
                 }
             }
         }
