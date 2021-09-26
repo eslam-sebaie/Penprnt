@@ -17,7 +17,7 @@ struct productInfo: Codable {
     let image: String?
     let name, datumDescription, itemNo, brandName: String?
     let price, wholeSale, quantity: String?
-    let size: [String?]
+    let size: [String]?
     let barCode: String?
     let date, design: String?
     let productColor: [String]?
@@ -61,7 +61,7 @@ struct Products: Codable {
     let image: String?
     let name, productsDescription, itemNo, brandName: String?
     let price, wholeSale, quantity: String?
-    let size: [String?]
+    let size: [String]?
     let barCode: String?
     let date, design: String?
     let productColor: [String]?

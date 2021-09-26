@@ -44,7 +44,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
             name = receiveInfo.name ?? ""
             price = receiveInfo.price ?? ""
             quantity = receiveInfo.quantity ?? ""
-            size = (receiveInfo.size.first ?? "") ?? ""
+            size = (receiveInfo.size?.first ?? "") ?? ""
             image = receiveInfo.image ?? ""
             
             if receiveInfo.productColor?.count == 0 {
@@ -53,7 +53,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
             else {
                 colorCheck = true
             }
-            if receiveInfo.size.count == 0 {
+            if receiveInfo.size?.count == 0 {
                 sizeCheck = false
             }
             else {
@@ -65,7 +65,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
             name = receiveInfo1.products.name ?? ""
             price = receiveInfo1.products.price ?? ""
             quantity = receiveInfo1.products.quantity ?? ""
-            size = (receiveInfo1.products.size.first ?? "") ?? ""
+            size = (receiveInfo1.products.size?.first ?? "") ?? ""
             image = receiveInfo1.products.image ?? ""
             
             if receiveInfo1.products.productColor?.count == 0 {
@@ -74,7 +74,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
             else {
                 colorCheck = true
             }
-            if receiveInfo1.products.size.count == 0 {
+            if receiveInfo1.products.size?.count == 0 {
                 sizeCheck = false
             }
             else {
@@ -320,7 +320,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
                 return receiveInfo.productColor?.count ?? 0
             }
             else {
-                return receiveInfo.size.count
+                return receiveInfo.size?.count ?? 0
             }
         }
         else {
@@ -328,7 +328,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
                 return receiveInfo1.products.productColor?.count ?? 0
             }
             else {
-                return receiveInfo1.products.size.count
+                return receiveInfo1.products.size?.count ?? 0
             }
         }
         
@@ -345,7 +345,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
             }
             else {
                 let cell = productDetailsView.sizeCollectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as! SizeCollectionViewCell
-                cell.sizeLabel.text = receiveInfo.size[indexPath.row]
+                cell.sizeLabel.text = receiveInfo.size?[indexPath.row]
                 cell.contentView.dropShadow(radius: 6, shadow: 2)
                 cell.contentView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                 cell.contentView.layer.borderWidth = 1
@@ -361,7 +361,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
             }
             else {
                 let cell = productDetailsView.sizeCollectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as! SizeCollectionViewCell
-                cell.sizeLabel.text = receiveInfo1.products.size[indexPath.row]
+                cell.sizeLabel.text = receiveInfo1.products.size?[indexPath.row]
                 cell.contentView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                 cell.contentView.layer.borderWidth = 1
                 cell.contentView.dropShadow(radius: 6, shadow: 2)

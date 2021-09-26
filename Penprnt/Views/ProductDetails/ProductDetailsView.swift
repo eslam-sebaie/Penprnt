@@ -79,7 +79,7 @@ class ProductDetailsView: UIView {
         else {
             colorCollectionView.reloadData()
         }
-        if info.size.count == 0 {
+        if info.size?.count == 0 {
             sizeView.isHidden = true
             sizeViewHeight.constant = 0
             upperSizeHeight.constant = 0
@@ -105,7 +105,7 @@ class ProductDetailsView: UIView {
         else {
             colorCollectionView.reloadData()
         }
-        if info.products.size.count == 0 {
+        if info.products.size?.count == 0 {
             sizeView.isHidden = true
             sizeViewHeight.constant = 0
             upperSizeHeight.constant = 0
