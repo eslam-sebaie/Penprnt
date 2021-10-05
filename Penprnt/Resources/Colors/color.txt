@@ -5,3 +5,4 @@
 "skyColor": #00AEEF
 "progressColor": #EFA61D
 "completeColor": #00BC41
+"tab": #FAFBFD
