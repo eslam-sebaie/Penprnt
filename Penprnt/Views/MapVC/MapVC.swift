@@ -119,7 +119,7 @@ class MapVC: UIViewController {
     
     func centerViewOnUserLocation() {
         if let location = mapView.locationManager.location?.coordinate {
-            let region = MKCoordinateRegion.init(center: location , latitudinalMeters: 10000, longitudinalMeters: 10000)
+            let region = MKCoordinateRegion.init(center: location , latitudinalMeters: 1000, longitudinalMeters: 1000)
             mapView.mapView.setRegion(region, animated: true)
         }
     }
@@ -166,13 +166,13 @@ class MapVC: UIViewController {
     
     func getCenterLocation(mapView: MKMapView) -> CLLocation {
         
-        let latitude = mapView.centerCoordinate.latitude
-        let longtiude = mapView.centerCoordinate.longitude
+        let latitude = self.mapView.mapView.centerCoordinate.latitude
+        let longtiude = self.mapView.mapView.centerCoordinate.longitude
         
         let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longtiude)
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: coordinate, span: span)
-        self.mapView.mapView.setRegion(region, animated: true)
+//        self.mapView.mapView.setRegion(region, animated: true)
         
         return CLLocation(latitude: latitude, longitude: longtiude)
         

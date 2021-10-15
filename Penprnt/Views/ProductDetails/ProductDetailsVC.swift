@@ -44,7 +44,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
             name = receiveInfo.name ?? ""
             price = receiveInfo.price ?? ""
             quantity = receiveInfo.quantity ?? ""
-            size = (receiveInfo.size?.first ?? "") ?? ""
+//            size = (receiveInfo.size?.first ?? "") ?? ""
             image = receiveInfo.image ?? ""
             
             if receiveInfo.productColor?.count == 0 {
@@ -65,7 +65,7 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
             name = receiveInfo1.products.name ?? ""
             price = receiveInfo1.products.price ?? ""
             quantity = receiveInfo1.products.quantity ?? ""
-            size = (receiveInfo1.products.size?.first ?? "") ?? ""
+//            size = (receiveInfo1.products.size?.first ?? "") ?? ""
             image = receiveInfo1.products.image ?? ""
             
             if receiveInfo1.products.productColor?.count == 0 {
@@ -230,34 +230,42 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
                     self.show_Alert("Please!", "Choose Color.")
                 }
                 else {
-                    if productDetailsView.quantityLabel.text == "0.0" {
-                        self.show_Alert("Please!", "Enter Quantity.")
+                    
+                    if size == "" {
+                        self.show_Alert("Please!", "Choose Size.")
                     }
                     else {
-                        if self.cartInfo.count == 0 {
-                            self.productDetailsView.showLoader()
-                            APIManager.setCart(emailNumber: UserDefaultsManager.shared().Email ?? "", product_id: productID, name: name, price: price, quantity: self.productDetailsView.quantityLabel.text ?? "", Color: colorChoosen, size: size, image: image, note: self.productDetailsView.noteTextView.text ?? "") {
-                              
-                                UserDefaultsManager.shared().vendorID = self.receiveVendorID
-                                    self.productDetailsView.hideLoader()
-                                    self.dismiss(animated: true, completion: nil)
-                                
-                            }
+                        if productDetailsView.quantityLabel.text == "0.0" {
+                            self.show_Alert("Please!", "Enter Quantity.")
                         }
-                        else if self.cartInfo.count != 0 && receiveVendorID == UserDefaultsManager.shared().vendorID {
-                            self.productDetailsView.showLoader()
-                            APIManager.setCart(emailNumber: UserDefaultsManager.shared().Email ?? "", product_id: productID, name: name, price: price, quantity: self.productDetailsView.quantityLabel.text ?? "", Color: colorChoosen, size: size, image: image, note: self.productDetailsView.noteTextView.text ?? "") {
-                                UserDefaultsManager.shared().vendorID = self.receiveVendorID
-                                    self.productDetailsView.hideLoader()
-                                    self.dismiss(animated: true, completion: nil)
+                        else {
+                            if self.cartInfo.count == 0 {
+                                self.productDetailsView.showLoader()
+                                APIManager.setCart(emailNumber: UserDefaultsManager.shared().Email ?? "", product_id: productID, name: name, price: price, quantity: self.productDetailsView.quantityLabel.text ?? "", Color: colorChoosen, size: size, image: image, note: self.productDetailsView.noteTextView.text ?? "") {
+                                  
+                                    UserDefaultsManager.shared().vendorID = self.receiveVendorID
+                                        self.productDetailsView.hideLoader()
+                                        self.dismiss(animated: true, completion: nil)
+                                    
+                                }
                             }
-                        }
-                        else if self.cartInfo.count != 0 && receiveVendorID != UserDefaultsManager.shared().vendorID {
-                            showAlert(title: "Sorry.", massage: "Do You Want To Delete your Cart First?", present: self, titleBtn: "OK") {
-                                self.deleteCarts(cartInfo: self.cartInfo)
+                            else if self.cartInfo.count != 0 && receiveVendorID == UserDefaultsManager.shared().vendorID {
+                                self.productDetailsView.showLoader()
+                                APIManager.setCart(emailNumber: UserDefaultsManager.shared().Email ?? "", product_id: productID, name: name, price: price, quantity: self.productDetailsView.quantityLabel.text ?? "", Color: colorChoosen, size: size, image: image, note: self.productDetailsView.noteTextView.text ?? "") {
+                                    UserDefaultsManager.shared().vendorID = self.receiveVendorID
+                                        self.productDetailsView.hideLoader()
+                                        self.dismiss(animated: true, completion: nil)
+                                }
+                            }
+                            else if self.cartInfo.count != 0 && receiveVendorID != UserDefaultsManager.shared().vendorID {
+                                showAlert(title: "Sorry.", massage: "Do You Want To Delete your Cart First?", present: self, titleBtn: "OK") {
+                                    self.deleteCarts(cartInfo: self.cartInfo)
+                                }
                             }
                         }
                     }
+                    
+                   
                 }
             }
             else {
@@ -378,10 +386,20 @@ class ProductDetailsVC: UIViewController, UICollectionViewDataSource, UICollecti
                 productDetailsView.saveView.isHidden = false
                 self.perform(#selector(self.popupHide), with: self, afterDelay: 1)
             }
+            else {
+                size =  receiveInfo.size?[indexPath.row] ?? ""
+                productDetailsView.saveView.isHidden = false
+                self.perform(#selector(self.popupHide), with: self, afterDelay: 1)
+            }
         }
         else {
             if collectionView == productDetailsView.colorCollectionView {
                 colorChoosen =  receiveInfo1.products.productColor?[indexPath.row] ?? ""
+                productDetailsView.saveView.isHidden = false
+                self.perform(#selector(self.popupHide), with: self, afterDelay: 1)
+            }
+            else {
+                size =  receiveInfo1.products.size?[indexPath.row] ?? ""
                 productDetailsView.saveView.isHidden = false
                 self.perform(#selector(self.popupHide), with: self, afterDelay: 1)
             }

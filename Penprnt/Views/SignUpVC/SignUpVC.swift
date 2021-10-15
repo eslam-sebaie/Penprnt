@@ -45,7 +45,10 @@ class SignUpVC: UIViewController, sendingAddress, UIPickerViewDataSource, UIPick
     
     
     @IBAction func mapPressed(_ sender: Any) {
-        instantiateMapVC()
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let mapVC = sb.instantiateViewController(withIdentifier: "MapVC") as! MapVC
+        mapVC.delegate = (self as sendingAddress)
+        self.present(mapVC ,animated: true, completion: nil)
     }
     
     @IBAction func countryPressed(_ sender: Any) {
