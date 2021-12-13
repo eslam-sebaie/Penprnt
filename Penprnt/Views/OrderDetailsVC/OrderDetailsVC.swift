@@ -40,7 +40,7 @@ class OrderDetailsVC: UIViewController, sendingAddress, UITableViewDelegate, UIT
             }
         }
     }
-    
+    var total = 0
     func getDetails() {
         self.orderDetailsView.showLoader()
         APIManager.getOrderDetails(id: receiveID) { (response) in
@@ -51,7 +51,13 @@ class OrderDetailsVC: UIViewController, sendingAddress, UITableViewDelegate, UIT
             case .success(let result):
                 self.orderDetailsView.hideLoader()
                 self.orderDetails = result.data ?? []
-                self.orderDetailsView.priceLabel.text = "KD \(result.data?[0].order?.totalPrice ?? "")"
+                for i in self.orderDetails {
+                    let price = Int(i.price ?? "0") ?? 0
+                    let quantity = Double(i.quantity ?? "0.0") ?? 0.0
+                    let intQuant = Int(quantity)
+                    self.total += (price * intQuant)
+                }
+                self.orderDetailsView.priceLabel.text = "KD \(self.total)"
                 self.orderDetailsView.orderDetailsTableView.reloadData()
             }
         }

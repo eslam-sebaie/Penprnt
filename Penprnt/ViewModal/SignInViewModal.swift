@@ -48,7 +48,7 @@ extension SignInViewModel: SignInViewModelProtocol {
                     self.view.hideLoader()
                 case .success(let result):
                     print(result)
-                    UserDefaultsManager.shared().Token = result.message
+                    UserDefaultsManager.shared().Token = result.token
                     UserDefaultsManager.shared().Email = result.data?.emailNumber
                     UserDefaultsManager.shared().phone = result.data?.phone
                     UserDefaultsManager.shared().Password = password

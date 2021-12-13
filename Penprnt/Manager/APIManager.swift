@@ -151,7 +151,6 @@ class APIManager {
             response in
             guard response.error == nil else {
                 print(response.error!)
-                
                 return
             }
             

@@ -24,6 +24,16 @@ extension UIView {
         self.layer.cornerRadius = radius
         self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
+    func dropShadowProd(scale: Bool = true, radius: CGFloat, shadow: CGFloat) {
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = ColorName.shadow.color.cgColor
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowOffset = CGSize(width: 3, height: 3)
+        self.layer.shadowRadius = shadow
+        self.layer.shouldRasterize = true
+        self.layer.cornerRadius = radius
+        self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
     
     func showLoader() {
         let activityIndicator = setupActivityIndicator()

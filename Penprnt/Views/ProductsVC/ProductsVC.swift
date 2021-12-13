@@ -156,7 +156,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
     func productCollectionViewSpacing() {
         if let layout = productsView.productCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             
-            let width = 0.35 * productsView.productCollectionView.frame.width
+            let width = 0.30 * productsView.productCollectionView.frame.width
             let height = CGFloat(253)
             layout.minimumLineSpacing = 16
             layout.minimumInteritemSpacing = 16
@@ -167,7 +167,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
     func NewCollectionViewSpacing(){
         if let layout = productsView.newProductCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             
-            let width = 0.35 * productsView.newProductCollectionView.frame.width
+            let width = 0.30 * productsView.newProductCollectionView.frame.width
             let height = CGFloat(253)
             layout.minimumLineSpacing = 16
             layout.minimumInteritemSpacing = 16
@@ -192,15 +192,16 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
             cell.newProductImage.sd_setImage(with: URL(string: imageArray[indexPath.row]), completed: nil)
             cell.newProductPrice.text = "\(priceArray[indexPath.row]) KD"
             cell.favImage.isHidden = true
-            cell.newProductImage.layer.cornerRadius = 8
-            cell.newProductImage.layer.masksToBounds = true
-            cell.newProductImage.clipsToBounds = true
+//            cell.newProductImage.layer.cornerRadius = 8
+//            cell.newProductImage.layer.masksToBounds = true
+//            cell.newProductImage.clipsToBounds = true
             cell.newProductRate.settings.updateOnTouch = false
             cell.newProductRate.settings.fillMode = .precise
             cell.newProductRate.rating = Double(rateArray[indexPath.row]) ?? 0.0
             cell.contentView.layer.cornerRadius = 8
             cell.contentView.layer.masksToBounds = true
             cell.newProductRateCount.text = "(\(countArray[indexPath.row]))"
+            cell.dropShadowProd(radius: 8, shadow: 1)
             return cell
         }
         else {
@@ -209,14 +210,15 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
             cell.productImage.sd_setImage(with: URL(string: imageArray1[indexPath.row]), completed: nil)
             cell.productPrice.text = "\(priceArray1[indexPath.row]) KD"
             cell.favImage.isHidden = true
-            cell.productImage.layer.cornerRadius = 8
-            cell.productImage.layer.masksToBounds = true
+//            cell.productImage.layer.cornerRadius = 8
+//            cell.productImage.layer.masksToBounds = true
             cell.productRate.settings.updateOnTouch = false
             cell.productRate.settings.fillMode = .precise
             cell.productRate.rating = Double(rateArray1[indexPath.row]) ?? 0.0
             cell.contentView.layer.cornerRadius = 8
             cell.contentView.layer.masksToBounds = true
             cell.productRateCount.text = "(\(countArray1[indexPath.row]))"
+            cell.dropShadowProd(radius: 8, shadow: 2)
             return cell
         }
         
@@ -242,7 +244,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let yourWidth = 0.35 * self.view.bounds.size.width
+        let yourWidth = (0.50 * self.view.bounds.size.width) - 40
         let yourHeight = CGFloat(253)
 
         return CGSize(width: yourWidth, height: yourHeight)
@@ -252,7 +254,7 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        return 2
     }
     
     

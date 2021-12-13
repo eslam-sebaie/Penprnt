@@ -17,5 +17,6 @@ class NewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var favImage: UIImageView!
     override func prepareForReuse() {
         newProductImage.image = nil
+        self.setCornerRadius(radius: 8)
     }
 }

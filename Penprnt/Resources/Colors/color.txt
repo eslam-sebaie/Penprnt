@@ -6,3 +6,4 @@
 "progressColor": #EFA61D
 "completeColor": #00BC41
 "tab": #FAFBFD
+"shadow": #D3D3D3
