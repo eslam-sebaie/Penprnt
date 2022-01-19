@@ -42,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="122" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1z-2Q-n9u">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="729"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsX-zY-xpW">
                                                 <rect key="frame" x="24" y="8" width="366" height="45"/>
@@ -119,14 +119,17 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Saller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2e-bY-Gzp">
-                                                <rect key="frame" x="24" y="414" width="73.5" height="18"/>
+                                                <rect key="frame" x="24" y="415" width="73.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RiZ-Ja-sZn">
-                                                <rect key="frame" x="24" y="127" width="366" height="623"/>
+                                                <rect key="frame" x="24" y="127" width="366" height="256"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="256" id="hLX-aO-Qsh"/>
+                                                </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gbz-ge-ubh">
                                                     <size key="itemSize" width="138" height="253"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -246,7 +249,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="V63-gc-LSv">
-                                                <rect key="frame" x="24" y="448" width="390" height="255"/>
+                                                <rect key="frame" x="24" y="449" width="390" height="255"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="255" id="ibt-Dr-buN"/>
@@ -387,15 +390,8 @@
                                             <constraint firstItem="V63-gc-LSv" firstAttribute="leading" secondItem="n1z-2Q-n9u" secondAttribute="leading" constant="24" id="mga-xd-Mcd"/>
                                             <constraint firstItem="jsX-zY-xpW" firstAttribute="leading" secondItem="n1z-2Q-n9u" secondAttribute="leading" constant="24" id="ppg-ZD-dOH"/>
                                             <constraint firstAttribute="trailing" secondItem="RiZ-Ja-sZn" secondAttribute="trailing" constant="24" id="v1V-XZ-vVP"/>
-                                            <constraint firstAttribute="bottom" secondItem="RiZ-Ja-sZn" secondAttribute="bottom" constant="24" id="w84-6m-7Sc"/>
                                             <constraint firstItem="B2e-bY-Gzp" firstAttribute="leading" secondItem="n1z-2Q-n9u" secondAttribute="leading" constant="24" id="wD0-ei-fI0"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="B2e-bY-Gzp"/>
-                                                <exclude reference="V63-gc-LSv"/>
-                                            </mask>
-                                        </variation>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
