@@ -153,6 +153,7 @@ class SignUpVC: UIViewController, sendingAddress, UIPickerViewDataSource, UIPick
                 }
             }
             else {
+                self.hideLoader()
                 self.show_Alert("Sorry!", "You Are Blocked Try Later")
             }
         }
