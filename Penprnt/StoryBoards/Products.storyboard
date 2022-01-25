@@ -144,7 +144,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="138" height="253"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <imageView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catimage" translatesAutoresizingMaskIntoConstraints="NO" id="1OA-5r-r43">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catimage" translatesAutoresizingMaskIntoConstraints="NO" id="1OA-5r-r43">
                                                                     <rect key="frame" x="0.0" y="0.0" width="138" height="165"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="165" id="oJS-HZ-aiA"/>

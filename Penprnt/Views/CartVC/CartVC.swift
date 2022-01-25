@@ -84,7 +84,9 @@ class CartVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             nameArray.append(i.name ?? "")
             imageArray.append(i.image ?? "")
             let price = Int(i.price ?? "0") ?? 0
-            totalPrice += price
+            let quantity = Int(i.quantity ?? "0") ?? 0
+            let total = price * quantity
+            totalPrice += total
         }
     }
     

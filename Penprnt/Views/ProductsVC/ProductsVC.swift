@@ -192,9 +192,9 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
             cell.newProductImage.sd_setImage(with: URL(string: imageArray[indexPath.row]), completed: nil)
             cell.newProductPrice.text = "\(priceArray[indexPath.row]) KD"
             cell.favImage.isHidden = true
-//            cell.newProductImage.layer.cornerRadius = 8
-//            cell.newProductImage.layer.masksToBounds = true
-//            cell.newProductImage.clipsToBounds = true
+            cell.newProductImage.layer.cornerRadius = 8
+            cell.newProductImage.layer.masksToBounds = true
+            cell.newProductImage.clipsToBounds = true
             cell.newProductRate.settings.updateOnTouch = false
             cell.newProductRate.settings.fillMode = .precise
             cell.newProductRate.rating = Double(rateArray[indexPath.row]) ?? 0.0
