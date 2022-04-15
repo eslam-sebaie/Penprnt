@@ -9,13 +9,28 @@ import UIKit
 
 class StoreView: UIView {
 
+    @IBOutlet weak var header: UILabel!
     @IBOutlet weak var storeTableView: UITableView!
     
     @IBOutlet weak var sideView: UIView!
     @IBOutlet weak var hideMenuDesign: UIButton!
     
-    var checkView = false
+    @IBOutlet weak var storeCollectionView: UICollectionView!
     
+    @IBOutlet weak var homeBack: UIImageView!
+    @IBOutlet weak var orderBack: UIImageView!
+    @IBOutlet weak var cardBack: UIImageView!
+    
+    @IBOutlet weak var locationBack: UIImageView!
+    @IBOutlet weak var shareBack: UIImageView!
+    
+    @IBOutlet weak var privacyBack: UIImageView!
+    
+    @IBOutlet weak var signOutBack: UIImageView!
+    
+    var checkView = false
+    var itemSize1 = CGSize(width: 0, height: 0)
+
     func menu(){
         if checkView == false {
             
@@ -32,6 +47,29 @@ class StoreView: UIView {
             }
             self.checkView = false
             hideMenuDesign.isHidden = true
+        }
+    }
+    func determineCollectionViewSpacing(){
+        if L10n.lang.localized == Language.arabic {
+            header.text = "الرئيسيه"
+            homeBack.transform = CGAffineTransform(scaleX: -1, y: 1)
+            orderBack.transform = CGAffineTransform(scaleX: -1, y: 1)
+            cardBack.transform = CGAffineTransform(scaleX: -1, y: 1)
+            locationBack.transform = CGAffineTransform(scaleX: -1, y: 1)
+            shareBack.transform = CGAffineTransform(scaleX: -1, y: 1)
+            privacyBack.transform = CGAffineTransform(scaleX: -1, y: 1)
+            signOutBack.transform = CGAffineTransform(scaleX: -1, y: 1)
+
+        }
+        if let layout = storeCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            let itemPerRow: CGFloat = 2
+            
+            let width = storeCollectionView.frame.width / itemPerRow
+            let height = CGFloat(223)
+            layout.minimumLineSpacing = 5
+            layout.minimumInteritemSpacing = 10
+            layout.estimatedItemSize = itemSize1
+            itemSize1 = CGSize(width: width, height: height)
         }
     }
 }

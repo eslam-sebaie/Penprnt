@@ -1,0 +1,129 @@
+
+/* Class = "UILabel"; text = "KD 7.90"; ObjectID = "0lC-p6-8ut"; */
+"0lC-p6-8ut.text" = "KD 7.90";
+
+/* Class = "UILabel"; text = "My Cards"; ObjectID = "1sg-jm-sPt"; */
+"1sg-jm-sPt.text" = "بطاقاتي";
+
+/* Class = "UITextField"; placeholder = "Search"; ObjectID = "26d-I1-bbz"; */
+"26d-I1-bbz.placeholder" = "بحث";
+
+/* Class = "UILabel"; text = "Search Results for..."; ObjectID = "2n8-fs-R0K"; */
+"2n8-fs-R0K.text" = "نتائج البحث لي...";
+
+/* Class = "UILabel"; text = "A4 Flyer"; ObjectID = "3I4-i9-upI"; */
+"3I4-i9-upI.text" = "A4 Flyer";
+
+/* Class = "UILabel"; text = "Home"; ObjectID = "7J5-NM-wv1"; */
+"7J5-NM-wv1.text" = "الرئيسيه";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "AFG-de-cA6"; */
+"AFG-de-cA6.text" = "Label";
+
+/* Class = "UILabel"; text = "Order History"; ObjectID = "CRf-z1-iPw"; */
+"CRf-z1-iPw.text" = "الطلبات";
+
+/* Class = "UILabel"; text = "Follow us"; ObjectID = "FfA-kV-QDe"; */
+"FfA-kV-QDe.text" = "تابعنا علي.";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FmV-d5-P7G"; */
+"FmV-d5-P7G.text" = "Label";
+
+/* Class = "UILabel"; text = "Home"; ObjectID = "H3V-w3-lvs"; */
+"H3V-w3-lvs.text" = "الرئيسيه";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Hm0-V0-bbn"; */
+"Hm0-V0-bbn.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Hqm-aZ-n9A"; */
+"Hqm-aZ-n9A.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "MyL-ey-SRV"; */
+"MyL-ey-SRV.text" = "Label";
+
+/* Class = "UILabel"; text = "Sign Out"; ObjectID = "Ncf-Yz-MfZ"; */
+"Ncf-Yz-MfZ.text" = "خروج";
+
+/* Class = "UILabel"; text = "Follow us"; ObjectID = "Rgu-O8-q2y"; */
+"Rgu-O8-q2y.text" = "تابعنا علي.";
+
+/* Class = "UILabel"; text = "Privacy & Policy"; ObjectID = "RhI-Qe-is1"; */
+"RhI-Qe-is1.text" = "سياسه الخصوصيه";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "TkR-PO-Wa3"; */
+"TkR-PO-Wa3.text" = "Label";
+
+/* Class = "UILabel"; text = "Privacy & Policy"; ObjectID = "Vyo-M1-NAa"; */
+"Vyo-M1-NAa.text" = "سياسه الخصوصيه";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XaM-Yr-nyj"; */
+"XaM-Yr-nyj.text" = "Label";
+
+/* Class = "UILabel"; text = "(10)"; ObjectID = "Yab-zL-EjL"; */
+"Yab-zL-EjL.text" = "(10)";
+
+/* Class = "UILabel"; text = "Change Location"; ObjectID = "aCN-HW-Hjx"; */
+"aCN-HW-Hjx.text" = "تغيير العنوان";
+
+/* Class = "UILabel"; text = "A4 Flyer"; ObjectID = "aor-2D-7gI"; */
+"aor-2D-7gI.text" = "A4 Flyer";
+
+/* Class = "UILabel"; text = "Select Category"; ObjectID = "cMj-qT-FTt"; */
+"cMj-qT-FTt.text" = "الاقسام الرئيسيه";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "d7f-jG-rv5"; */
+"d7f-jG-rv5.text" = "Label";
+
+/* Class = "UILabel"; text = "Select Item"; ObjectID = "d9t-Ly-N6w"; */
+"d9t-Ly-N6w.text" = "الاقسام الفرعيه";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "dCR-td-iIG"; */
+"dCR-td-iIG.text" = "Label";
+
+/* Class = "UILabel"; text = "Home"; ObjectID = "e4V-KR-I5s"; */
+"e4V-KR-I5s.text" = "الرئيسيه";
+
+/* Class = "UILabel"; text = "(10)"; ObjectID = "eBC-1X-ikC"; */
+"eBC-1X-ikC.text" = "(10)";
+
+/* Class = "UILabel"; text = "KD 7.90"; ObjectID = "f2M-CB-Wdp"; */
+"f2M-CB-Wdp.text" = "KD 7.90";
+
+/* Class = "UILabel"; text = "Search"; ObjectID = "gvP-Zp-9Ql"; */
+"gvP-Zp-9Ql.text" = "بحث";
+
+/* Class = "UILabel"; text = "Share The App"; ObjectID = "h3J-Ew-vyw"; */
+"h3J-Ew-vyw.text" = "مشاركه التطبيق";
+
+/* Class = "UILabel"; text = "Sign Out"; ObjectID = "jKx-bC-pwJ"; */
+"jKx-bC-pwJ.text" = "خروج";
+
+/* Class = "UILabel"; text = "Order History"; ObjectID = "lKu-d8-sfQ"; */
+"lKu-d8-sfQ.text" = "الطلبات";
+
+/* Class = "UILabel"; text = "Favorits"; ObjectID = "nj8-8E-fU7"; */
+"nj8-8E-fU7.text" = "المفضله";
+
+/* Class = "UILabel"; text = "Share The App"; ObjectID = "pyi-X9-5ED"; */
+"pyi-X9-5ED.text" = "مشاركه التطبيق";
+
+/* Class = "UILabel"; text = "My Cart"; ObjectID = "qkh-Mp-Brl"; */
+"qkh-Mp-Brl.text" = "السله";
+
+/* Class = "UILabel"; text = "s"; ObjectID = "thq-px-gzK"; */
+"thq-px-gzK.text" = "s";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "uvd-B1-2LF"; */
+"uvd-B1-2LF.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "w58-ca-XMN"; */
+"w58-ca-XMN.text" = "Label";
+
+/* Class = "UILabel"; text = "Change Location"; ObjectID = "wCV-bk-0fv"; */
+"wCV-bk-0fv.text" = "تغيير العنوان";
+
+/* Class = "UILabel"; text = "My Cards"; ObjectID = "yKW-ql-HJy"; */
+"yKW-ql-HJy.text" = "بطاقاتي";
+
+/* Class = "UIButton"; normalTitle = "Confirm Order"; ObjectID = "zQZ-tw-Krh"; */
+"zQZ-tw-Krh.normalTitle" = "تأكيد الطلب";

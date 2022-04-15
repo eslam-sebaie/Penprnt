@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        if let email = UserDefaultsManager.shared().Email , email != "" {
+//        if let email = UserDefaultsManager.shared().Email , email != "" {
             print("in 1")
             if let windowScene = scene as? UIWindowScene {
                    let window = UIWindow(windowScene: windowScene)
@@ -26,20 +26,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                    self.window = window
                    window.makeKeyAndVisible()
                }
-        }
-        else {
-            print("in 2")
-            if let windowScene = scene as? UIWindowScene {
-                   let window = UIWindow(windowScene: windowScene)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-                let initialViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeVC")
-                UserDefaultsManager.shared().vendorID = 0
-                   window.rootViewController = initialViewController
-                   self.window = window
-                   window.makeKeyAndVisible()
-               }
-        }
+//        }
+//        else {
+//            print("in 2")
+//            if let windowScene = scene as? UIWindowScene {
+//                   let window = UIWindow(windowScene: windowScene)
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//                let initialViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeVC")
+//                UserDefaultsManager.shared().vendorID = 0
+//                   window.rootViewController = initialViewController
+//                   self.window = window
+//                   window.makeKeyAndVisible()
+//               }
+//        }
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 

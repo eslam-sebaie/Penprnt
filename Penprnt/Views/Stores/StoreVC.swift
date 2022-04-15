@@ -11,18 +11,22 @@ class StoreVC: UIViewController, sendingAddress {
     func send(address: String) {
         print(address)
     }
+    
+    // MARK:- first call allStors as Exist Then Take First Store And Send in this page to get Main Categories.
 
     @IBOutlet var storeView: StoreView!
-    
-    
-    
     var allStors = [StoreInfo]()
+    var nameArray = ["Eslam", "Sebaie"]
+    var storeImage = ["school", "school"]
+    var detailsArray = ["Eslam", "Sebaie"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.storeView.sideView.isHidden = true
+        self.storeView.determineCollectionViewSpacing()
     }
     override func viewDidAppear(_ animated: Bool) {
-        getAllStors()
+        self.storeView.storeCollectionView.reloadData()
+        //getAllStors()
     }
     func getAllStors(){
         self.storeView.showLoader()
@@ -42,6 +46,16 @@ class StoreVC: UIViewController, sendingAddress {
     class func create() -> StoreVC {
         let searchVC: StoreVC = UIViewController.create(storyboardName: Storyboards.home, identifier: ViewControllers.storeVC)
         return searchVC
+    }
+    @IBAction func whatsPressed(_ sender: Any) {
+       
+        let phone = "01010805540"
+        let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phone)")!
+        if UIApplication.shared.canOpenURL(appURL) {
+            UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+        } else {
+            // WhatsApp is not installed
+        }
     }
     @IBAction func profilePressed(_ sender: Any) {
         if UserDefaultsManager.shared().Email == nil || UserDefaultsManager.shared().Email == "" {
@@ -135,31 +149,85 @@ class StoreVC: UIViewController, sendingAddress {
     
 
 }
-extension StoreVC: UITableViewDelegate, UITableViewDataSource {
+extension StoreVC: UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allStors.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.storeView.storeTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StoreTableViewCell
-        cell.storeMainView.setCornerRadius(radius: 16)
-        cell.storeNameView.setCornerRadius(radius: 12)
-        cell.storeImage.sd_setImage(with: URL(string: allStors[indexPath.row].storeFile ?? ""), completed: nil)
-        cell.storeName.text = allStors[indexPath.row].storeName
-        cell.storeProductCount.text = "\(allStors[indexPath.row].totalProducts?[0].total ?? "0") Products"
+//        cell.storeMainView.setCornerRadius(radius: 16)
+//        cell.storeNameView.setCornerRadius(radius: 12)
+//        cell.storeImage.sd_setImage(with: URL(string: allStors[indexPath.row].storeFile ?? ""), completed: nil)
+//        cell.storeName.text = allStors[indexPath.row].storeName
+//        cell.storeProductCount.text = "\(allStors[indexPath.row].totalProducts?[0].total ?? "0") Products"
+//
+        return cell
+    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let vendorID = allStors[indexPath.row].totalProducts?[0].vendorID
+//        let storyboard = UIStoryboard(name: Storyboards.home, bundle: nil)
+//        let catVC = storyboard.instantiateViewController(withIdentifier: "CategoryVC") as! CategoryVC
+//        catVC.receiveVendorID = vendorID ?? ""
+//        self.present(catVC, animated: true, completion: nil)
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 254
+//    }
+//
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return nameArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = storeView.storeCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! StoreCollectionViewCell
+        cell.storeName.text = nameArray[indexPath.row]
+        cell.storeDescription.text = detailsArray[indexPath.row]
+//        cell.storeImage.sd_setImage(with: URL(string: , completed: nil)
+        cell.storeImage.image = UIImage(named: storeImage[indexPath.row])
+        cell.storeImage.layer.cornerRadius = 8
+        cell.storeImage.layer.masksToBounds = true
+        cell.contentView.layer.cornerRadius = 8
+        cell.contentView.layer.masksToBounds = true
         
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vendorID = allStors[indexPath.row].totalProducts?[0].vendorID
-        let storyboard = UIStoryboard(name: Storyboards.home, bundle: nil)
-        let catVC = storyboard.instantiateViewController(withIdentifier: "CategoryVC") as! CategoryVC
-        catVC.receiveVendorID = vendorID ?? ""
-        self.present(catVC, animated: true, completion: nil)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let subcat = SubCategoryVC.create()
+//        subcat.receiveVendorID = receiveVendorID
+//        subcat.receiveCatID = "\(idArray[indexPath.row])"
+//        self.present(subcat, animated: true, completion: nil)
+        
+        
+//        categoryView.nameChoosen = nameArray[indexPath.row]
+//        let products = ProductsVC.create()
+//        products.receiveCatName = categoryView.nameChoosen
+//        products.receiveID = idArray[indexPath.row]
+//        self.present(products, animated: true, completion: nil)
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let yourWidth = 0.4 * self.view.frame.size.width
+        let yourHeight = CGFloat(223)
+
+        return CGSize(width: yourWidth, height: yourHeight)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 254
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
     }
     
 }
