@@ -84,6 +84,7 @@ class SignUpVC: UIViewController, sendingAddress, UIPickerViewDataSource, UIPick
             self.show_Alert("Please", "Enter Your password")
             return
         }
+        signUpView.phoneNumberWithCode = signUpView.countryCode.text! + signUpView.phoneTF.text!
         let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = self.signUpView.deliveryAddress.text ?? ""
         let activeSearch = MKLocalSearch(request: searchRequest)
@@ -99,14 +100,15 @@ class SignUpVC: UIViewController, sendingAddress, UIPickerViewDataSource, UIPick
                 
                 self.lat = Double(latitude!)
                 self.lng = Double(longitude!)
-                let response = Validation.shared.validate(values: (type: Validation.ValidationType.email, email),(Validation.ValidationType.phoneNo,phone))
+                let response = Validation.shared.validate(values: (type: Validation.ValidationType.email, email))
                 
                 switch response {
                 case .failure(_, let message):
                     self.show_Alert("Sorry!", message.localized())
                 case .success:
                     self.showLoader()
-                    self.checkotp()
+                    self.signUpViewModel.SignUp(name: self.signUpView.nameTF.text, emailNumber: self.signUpView.emailTF.text, address: self.signUpView.deliveryAddress.text, dateOfBirth: self.signUpView.dateTimeStamp, gender: self.signUpView.genderTF.text, phoneNumber: self.signUpView.phoneNumberWithCode,password: self.signUpView.passwordTF.text, lat: String(self.lat), lng: String(self.lng), points: "10", image: self.userImage)
+                    //self.checkotp()
                 }
             }
         }

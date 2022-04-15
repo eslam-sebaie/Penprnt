@@ -50,10 +50,11 @@ extension UIView {
     private func setupActivityIndicator() -> UIActivityIndicatorView {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.frame = self.bounds
-        activityIndicator.color = .darkText
+        activityIndicator.color = ColorName.mainColor.color
         activityIndicator.tintColor = .blue
         activityIndicator.center = self.center
         activityIndicator.style = .gray
+        activityIndicator.transform = CGAffineTransform(scaleX: 2, y: 2)
         activityIndicator.tag = 333
         return activityIndicator
     }

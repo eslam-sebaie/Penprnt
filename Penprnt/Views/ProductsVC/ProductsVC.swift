@@ -242,9 +242,8 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
         }
         
     }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let yourWidth = (0.50 * self.view.bounds.size.width) - 40
+        let yourWidth = 0.35 * self.view.bounds.size.width
         let yourHeight = CGFloat(253)
 
         return CGSize(width: yourWidth, height: yourHeight)
@@ -254,8 +253,24 @@ class ProductsVC: UIViewController, UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
+        return 16
     }
+    
+    
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let yourWidth = (0.50 * self.view.bounds.size.width) - 40
+//        let yourHeight = CGFloat(253)
+//
+//        return CGSize(width: yourWidth, height: yourHeight)
+//    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets.zero
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 2
+//    }
     
     
     
