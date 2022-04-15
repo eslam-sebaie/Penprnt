@@ -18,9 +18,13 @@ class MapVCView: UIView {
     
     @IBOutlet weak var addressLabel: UILabel!
     
+    @IBOutlet weak var backDesign: UIButton!
     let locationManager = CLLocationManager()
     
     func updateUI(){
+        if L10n.lang.localized == Language.arabic {
+            backDesign.transform = CGAffineTransform(scaleX: -1, y: 1)
+        }
         saveButton.layer.cornerRadius = 8
         saveButton.layer.masksToBounds = true
         

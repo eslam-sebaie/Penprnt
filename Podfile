@@ -26,6 +26,7 @@ target 'Penprnt' do
     pod "ImageSlideshow/Kingfisher"
     pod 'fluid-slider'
     pod 'MapCache'
+    pod 'MOLH'
   target 'PenprntTests' do
     inherit! :search_paths
     # Pods for testing

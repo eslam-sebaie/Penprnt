@@ -90,3 +90,20 @@ extension UITextField {
         self.rightViewMode = .always
     }
 }
+@IBDesignable extension UIView {
+    @IBInspectable var cornerRadius: CGFloat {
+        get { return layer.cornerRadius }
+        set {
+              layer.cornerRadius = newValue
+
+              // If masksToBounds is true, subviews will be
+              // clipped to the rounded corners.
+              layer.masksToBounds = (newValue > 0)
+        }
+    }
+}
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+}

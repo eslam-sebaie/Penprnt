@@ -35,13 +35,21 @@ class SignUpView: UIView {
     @IBOutlet weak var otp_tf: SGCodeTextField!
     @IBOutlet weak var verifyDesign: UIButton!
     
+    @IBOutlet weak var backDesign: UIButton!
+    @IBOutlet weak var userImage: UIImageView!
+    
     var genderPickerView = UIPickerView()
     var genderArray = ["Male", "Female"]
     var datePicker = UIDatePicker()
     var dateTimeStamp = ""
     var phoneNumberWithCode = ""
     var verification_id: String? = nil
+    
+    
     func updateUI(){
+        if L10n.lang.localized == Language.arabic {
+            backDesign.transform = CGAffineTransform(scaleX: -1, y: 1)
+        }
         mainOTPView.isHidden = true
 //        otpView.dropShadow(radius: 16, shadow: 2)
         verifyDesign.setCornerRadius(radius: 8)

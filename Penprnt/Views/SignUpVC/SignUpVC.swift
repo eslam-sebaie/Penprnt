@@ -22,19 +22,22 @@ class SignUpVC: UIViewController, sendingAddress, UIPickerViewDataSource, UIPick
     
     @IBOutlet var signUpView: SignUpView!
     private var signUpViewModel: SignUpViewModelProtocol!
+    var imagePicker = UIImagePickerController()
+    var storeImg: String?
     var lat = 0.0
     var lng = 0.0
     var userImage = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker.delegate = self
         signUpView.genderPickerView.delegate = self
         signUpView.genderTF.inputView = signUpView.genderPickerView
         signUpView.genderPickerView.dataSource = self
         updateCountryCode()
         signUpView.updateUI()
-        APIManager.uploadPhoto(image: UIImage(named: "editProfile")!) { (err, img) in
-            self.userImage = img?.data ?? ""
-        }
+//        APIManager.uploadPhoto(image: UIImage(named: "userImg")!) { (err, img) in
+//            self.userImage = img?.data ?? ""
+//        }
     }
     
     class func create() -> SignUpVC {
@@ -232,4 +235,24 @@ extension UIScrollView {
         let desiredOffset = CGPoint(x: 0, y: -contentInset.top)
         setContentOffset(desiredOffset, animated: true)
    }
+}
+extension SignUpVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func setImagePicker(){
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        signUpView.userImage.image = image
+        self.signUpView.showLoader()
+        APIManager.uploadPhoto(image: image!) { (err, img) in
+            self.userImage = img?.data ?? ""
+            self.signUpView.hideLoader()
+            
+        }
+        
+        picker.dismiss(animated: false, completion: nil)
+    }
 }

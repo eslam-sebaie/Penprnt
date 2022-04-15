@@ -80,3 +80,7 @@ struct TableCells {
    
 }
 
+struct Language {
+    static let arabic = "ar"
+    static let english = "en"
+}

@@ -377,6 +377,7 @@ PODS:
   - Kingfisher/Core (5.15.8)
   - leveldb-library (1.22)
   - MapCache (0.9.0)
+  - MOLH (1.4.3)
   - nanopb (2.30906.0):
     - nanopb/decode (= 2.30906.0)
     - nanopb/encode (= 2.30906.0)
@@ -408,6 +409,7 @@ DEPENDENCIES:
   - ImageSlideshow/Kingfisher
   - IQKeyboardManagerSwift (= 6.2.1)
   - MapCache
+  - MOLH
   - SDWebImage (~> 5.0)
   - SGCodeTextField
   - SKCountryPicker
@@ -447,6 +449,7 @@ SPEC REPOS:
     - Kingfisher
     - leveldb-library
     - MapCache
+    - MOLH
     - nanopb
     - pop
     - PromisesObjC
@@ -488,6 +491,7 @@ SPEC CHECKSUMS:
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   MapCache: b0a9f5f9a0ed7cbac45443fea0e7e03a97bf0c66
+  MOLH: e45827d200aeb1310641090fd8cd03ad2b42ae72
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
@@ -497,6 +501,6 @@ SPEC CHECKSUMS:
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 095cbe2a4ed4f3f2f3b2b4e58148d5f62ce73309
+PODFILE CHECKSUM: ef64a55d36e6d3acf9752573f6307500046bbec3
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.11.2

@@ -1,0 +1,108 @@
+
+/* Class = "UIButton"; normalTitle = "VERIFY NOW"; ObjectID = "2Cu-Rh-PIu"; */
+"2Cu-Rh-PIu.normalTitle" = "VERIFY NOW";
+
+/* Class = "UILabel"; text = "Phone Verification"; ObjectID = "41m-8a-gic"; */
+"41m-8a-gic.text" = "Phone Verification";
+
+/* Class = "UILabel"; text = "Continue sign up"; ObjectID = "5VN-ri-jTS"; */
+"5VN-ri-jTS.text" = "إنشاء حساب";
+
+/* Class = "UILabel"; text = "Login with your phone number"; ObjectID = "6P7-im-tzI"; */
+"6P7-im-tzI.text" = "Login with your phone number";
+
+/* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "8Vm-pd-6h9"; */
+"8Vm-pd-6h9.normalTitle" = "التالي";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "8kg-6V-My8"; */
+"8kg-6V-My8.placeholder" = "البريد الألكتروني";
+
+/* Class = "UILabel"; text = "Enter your OTP code here"; ObjectID = "A0U-A6-tvV"; */
+"A0U-A6-tvV.text" = "Enter your OTP code here";
+
+/* Class = "UIButton"; normalTitle = "Don't have an account ? Sign up as User"; ObjectID = "Axa-Mu-w4e"; */
+"Axa-Mu-w4e.normalTitle" = "هل لديك حساب؟ تسجيل";
+
+/* Class = "UITextField"; placeholder = "Gender"; ObjectID = "Dng-xX-3On"; */
+"Dng-xX-3On.placeholder" = "النوع";
+
+/* Class = "UIButton"; normalTitle = "SKIP"; ObjectID = "Lje-3A-vRa"; */
+"Lje-3A-vRa.normalTitle" = "تخطي";
+
+/* Class = "UILabel"; text = "Phone Verification"; ObjectID = "P5w-xD-KLd"; */
+"P5w-xD-KLd.text" = "Phone Verification";
+
+/* Class = "UILabel"; text = "Enter your OTP code here"; ObjectID = "Q5L-Xb-T2e"; */
+"Q5L-Xb-T2e.text" = "Enter your OTP code here";
+
+/* Class = "UILabel"; text = "600"; ObjectID = "Rkq-I3-eOz"; */
+"Rkq-I3-eOz.text" = "600";
+
+/* Class = "UILabel"; text = "Delivery Address"; ObjectID = "Sv9-7K-RiJ"; */
+"Sv9-7K-RiJ.text" = "عنوان التوصيل";
+
+/* Class = "UITextField"; placeholder = "Address Details"; ObjectID = "TX1-r4-Fvu"; */
+"TX1-r4-Fvu.placeholder" = "تفاصيل العنوان";
+
+/* Class = "UILabel"; text = "OR"; ObjectID = "UFZ-uD-v4x"; */
+"UFZ-uD-v4x.text" = "او";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "V9x-hj-u0V"; */
+"V9x-hj-u0V.placeholder" = "الرقم السري";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "XXr-0J-o9Z"; */
+"XXr-0J-o9Z.placeholder" = "الأسم";
+
+/* Class = "UIButton"; normalTitle = "Forget Password ?"; ObjectID = "YoQ-QF-h49"; */
+"YoQ-QF-h49.normalTitle" = "نسيت الرقم السري؟";
+
+/* Class = "UIButton"; normalTitle = "SIGN IN"; ObjectID = "ZFn-RX-Q0c"; */
+"ZFn-RX-Q0c.normalTitle" = "دخول";
+
+/* Class = "UIButton"; normalTitle = "Already Have an account ? Sign in"; ObjectID = "Zed-ip-9ah"; */
+"Zed-ip-9ah.normalTitle" = "بالفعل لديك حساب؟ دخول";
+
+/* Class = "UILabel"; text = "Sign in as User"; ObjectID = "ZlH-WJ-Nb7"; */
+"ZlH-WJ-Nb7.text" = "دخول كمستخدم";
+
+/* Class = "UIButton"; normalTitle = "VERIFY NOW"; ObjectID = "aCC-Zt-op4"; */
+"aCC-Zt-op4.normalTitle" = "VERIFY NOW";
+
+/* Class = "UITextField"; placeholder = "Date of Birth"; ObjectID = "b3A-o8-Lug"; */
+"b3A-o8-Lug.placeholder" = "تاريخ الميلاد";
+
+/* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "bfd-s3-tp5"; */
+"bfd-s3-tp5.normalTitle" = "التالي";
+
+/* Class = "UILabel"; text = "600"; ObjectID = "faS-T6-7fd"; */
+"faS-T6-7fd.text" = "600";
+
+/* Class = "UILabel"; text = "Sign in or Create an account"; ObjectID = "jDZ-Ve-lLw"; */
+"jDZ-Ve-lLw.text" = "دخول او تسجيل حساب";
+
+/* Class = "UILabel"; text = "Sign up user"; ObjectID = "jul-LT-f7s"; */
+"jul-LT-f7s.text" = "تسجيل كمستخدم";
+
+/* Class = "UILabel"; text = "Sign In user"; ObjectID = "kWV-Dd-F4e"; */
+"kWV-Dd-F4e.text" = "دخول كمستخدم";
+
+/* Class = "UILabel"; text = "Continue with facebook"; ObjectID = "loU-94-VJA"; */
+"loU-94-VJA.text" = "Continue with facebook";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "myb-43-AKn"; */
+"myb-43-AKn.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Enter Password"; ObjectID = "oMa-4l-3Me"; */
+"oMa-4l-3Me.placeholder" = "الرقم السري";
+
+/* Class = "UIButton"; normalTitle = "CONFIRM"; ObjectID = "rZi-i2-pKx"; */
+"rZi-i2-pKx.normalTitle" = "تأكيد";
+
+/* Class = "UILabel"; text = "Delivery Address"; ObjectID = "x3w-gc-QI3"; */
+"x3w-gc-QI3.text" = "عنوان التوصيل";
+
+/* Class = "UITextField"; placeholder = "DeliveryAddress"; ObjectID = "yeY-ov-I7w"; */
+"yeY-ov-I7w.placeholder" = "عنوان التوصيل";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "yhe-PM-ZTw"; */
+"yhe-PM-ZTw.placeholder" = "البريد الألكتروني";
